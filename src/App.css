@@ -1,3 +1,19 @@
 .posterImg{
     /* width: 200px; */
 }
+
+html {
+    overflow-x: hidden;
+}
+
+.trending{
+    background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+}
+
+.top-rated{
+    
+}
+
+.upcoming{
+    background-image: linear-gradient(to right, #b5b5b5 0%, black 100%);
+}
