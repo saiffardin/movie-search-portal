@@ -10,20 +10,36 @@ function App() {
      */
 
     const [data, setData] = useState([]);
-    let url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_API}`;
+    const [genres, setGenres] = useState([]);
+
+    let trendingMoviesUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_API}`;
     let posterUrl = `https://image.tmdb.org/t/p/w500`;
+    let genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_API}&language=en-US`;
 
     useEffect(() => {
-        fetch(url)
-            .then((response) => response.json())
-            .then((json) => setData(json.results))
+        fetch(trendingMoviesUrl)
+            .then((data) => data.json())
+            .then((res) => setData(res.results))
+
+        fetch(genreUrl)
+            .then((data) => data.json())
+            .then((res) => setGenres(res.genres))
     }, [])
 
-    console.log(data)
+    console.log(genres)
+    console.log('----------------------------------')
     // data.map(movie => {
     //     console.log(Object.keys(movie))
 
     // })
+
+
+    const getGenreNameById = (arr, id) => {
+        let found = arr.find(item => item.id === id);
+        console.log(found?.name);
+    }
+
+    getGenreNameById(genres, 28);
 
 
     return (
