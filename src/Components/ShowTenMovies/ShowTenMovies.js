@@ -1,18 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
-import {Badge, Card, Col, Row} from 'react-bootstrap';
+import {Badge, Button, Card, Col, Row} from 'react-bootstrap';
 import {getGenreNameById} from '../../utility/genre';
 
 const ShowTenMovies = (props) => {
 
     const {genres, divBg, sectionTitle, movies} = props;
 
- 
+
     return (
         <div className={`${divBg} w-100 py-3`}>
-            <h1 className={`text-center ${divBg!=='top-rated' && 'text-white'}`}>{sectionTitle}</h1>
+            {/* Section Title */}
+            <h1 className={`text-center ${divBg !== 'top-rated' && 'text-white'}`}>{sectionTitle}</h1>
 
-
+            {/* Cards - Movies */}
             <Row lg={5} >
                 {movies.map((movie, index) => (
                     <Col className="d-flex justify-content-center">
@@ -70,6 +71,14 @@ const ShowTenMovies = (props) => {
                     </Col>
                 ))}
             </Row>
+
+            {/* view all button */}
+            <div className=" text-center m-3">
+                <Button variant="danger" size="lg">
+                    View All {sectionTitle}
+                </Button>
+
+            </div>
 
         </div >
     );
