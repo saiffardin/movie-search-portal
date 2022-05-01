@@ -18,13 +18,12 @@ function App() {
     const [genres, setGenres] = useState([]);
     const [trendingMovies, setTrendingMovies] = useState([]);
     const [topRatedMovies, setTopRatedMovies] = useState([]);
+    const [upcomingMovies, setUpcomingMovies] = useState([]);
 
     const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
     const trendingMoviesUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`;
-
     const topRatedMoviesUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`;
-
-
+    const upcomingMoviesUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`;
 
 
 
@@ -38,14 +37,17 @@ function App() {
             .then((data) => data.json())
             .then((res) => setTrendingMovies(res.results.slice(0, 10)))
 
-
         fetch(topRatedMoviesUrl)
             .then((data) => data.json())
             .then((res) => setTopRatedMovies(res.results.slice(0, 10)))
+
+        fetch(upcomingMoviesUrl)
+            .then((data) => data.json())
+            .then((res) => setUpcomingMovies(res.results.slice(0, 10)))
     }, [])
 
 
-    console.log(topRatedMovies)
+    console.log(upcomingMovies)
 
     return (
         <div>
@@ -66,7 +68,15 @@ function App() {
                 sectionTitle="Top Rated Movies"
                 movies={topRatedMovies}
             />
-            
+
+            {/* Upcoming Movies */}
+            <ShowTenMovies
+                genres={genres}
+                divBg="upcoming"
+                sectionTitle="Upcoming Movies"
+                movies={upcomingMovies}
+            />
+
         </div>
     );
 }
