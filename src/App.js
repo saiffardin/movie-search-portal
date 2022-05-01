@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
 
 /* eslint-disable react-hooks/exhaustive-deps */
 import {useEffect, useState} from 'react';
 import './App.css';
-import ShowTenMovies from './Components/ShowTenMovies/ShowTenMovies';
+import ShowAllMovies from './Components/ShowAllMovies/ShowAllMovies';
+// import ShowTenMovies from './Components/ShowTenMovies/ShowTenMovies';
 
 function App() {
     /** data.results er 'keys' - 15
@@ -47,34 +49,42 @@ function App() {
     }, [])
 
 
-    console.log(upcomingMovies)
+    // console.log(genres);
 
     return (
         <div>
-            {/* <h1>App </h1> */}
+            <h1>App </h1>
 
             {/* Trending Movies */}
-            <ShowTenMovies
+            {/* <ShowTenMovies
                 genres={genres}
                 divBg="trending"
                 sectionTitle="Trending Movies"
                 movies={trendingMovies}
-            />
+            /> */}
 
             {/* Top Rated Movies */}
-            <ShowTenMovies
+            {/* <ShowTenMovies
                 genres={genres}
                 divBg="top-rated"
                 sectionTitle="Top Rated Movies"
                 movies={topRatedMovies}
-            />
+            /> */}
 
             {/* Upcoming Movies */}
-            <ShowTenMovies
+            {/* <ShowTenMovies
                 genres={genres}
                 divBg="upcoming"
                 sectionTitle="Upcoming Movies"
                 movies={upcomingMovies}
+            /> */}
+
+            <ShowAllMovies
+                genres={genres}
+                divBg="trending"
+                sectionTitle="Trending Movies"
+                currentPage={1}
+                url={trendingMoviesUrl}
             />
 
         </div>
