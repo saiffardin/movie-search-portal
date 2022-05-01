@@ -8,10 +8,13 @@ html {
 
 .trending{
     background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    /* color: white; */
+
 }
 
 .top-rated{
-    
+    /* color: black; */
+   background-color: #87878714;
 }
 
 .upcoming{
