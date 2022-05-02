@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import ShowTenMovies from '../ShowTenMovies/ShowTenMovies';
 
 
-const LandingPage = () => {
+const LandingPage = (props) => {
     /** data.results er 'keys' - 15
      * ['id', 'video', 'vote_average', 
      * 'overview', 'release_date', 'title', 
@@ -12,17 +12,19 @@ const LandingPage = () => {
      * 'original_title', 'popularity', 'media_type']
      */
 
-    const apiKey = process.env.REACT_APP_API;
+    const {genreUrl, trendingMoviesUrl, topRatedMoviesUrl, upcomingMoviesUrl} = props;
+
+    // const apiKey = process.env.REACT_APP_API;
 
     const [genres, setGenres] = useState([]);
     const [trendingMovies, setTrendingMovies] = useState([]);
     const [topRatedMovies, setTopRatedMovies] = useState([]);
     const [upcomingMovies, setUpcomingMovies] = useState([]);
 
-    const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
-    const trendingMoviesUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`;
-    const topRatedMoviesUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`;
-    const upcomingMoviesUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`;
+    // const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
+    // const trendingMoviesUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`;
+    // const topRatedMoviesUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`;
+    // const upcomingMoviesUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`;
 
     useEffect(() => {
 
@@ -47,7 +49,7 @@ const LandingPage = () => {
     return (
         <div>
             <h1>Landing Page</h1>
-            
+
 
             {/* Trending Movies */}
             <ShowTenMovies

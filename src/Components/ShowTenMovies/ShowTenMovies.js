@@ -1,12 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import {Badge, Button, Card, Col, Row} from 'react-bootstrap';
+import {useHistory} from "react-router-dom";
 import {getGenreNameById} from '../../utility/genre';
 
 const ShowTenMovies = (props) => {
 
     const {genres, divBg, sectionTitle, movies} = props;
+    let history = useHistory();
 
+    const handleViewAllClick = (category) => {
+        console.log('category:', category)
+        history.push(`/${category}/view-all`);
+        // window.location.reload();
+        
+    }
 
     return (
         <div className={`${divBg} w-100 py-3`}>
@@ -16,7 +24,7 @@ const ShowTenMovies = (props) => {
             {/* Cards - Movies */}
             <Row lg={5} >
                 {movies.map((movie, index) => (
-                    <Col className="d-flex justify-content-center">
+                    <Col className="d-flex justify-content-center" key={index}>
                         <Card style={{width: '16rem'}} className='m-2'>
 
                             <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className='posterImg' />
@@ -74,7 +82,7 @@ const ShowTenMovies = (props) => {
 
             {/* view all button */}
             <div className=" text-center m-3">
-                <Button variant="danger" size="lg">
+                <Button variant="danger" size="lg" onClick={() => handleViewAllClick(divBg)}>
                     View All {sectionTitle}
                 </Button>
 

@@ -44,7 +44,7 @@ const ShowAllMovies = (props) => {
             {/* Cards - Movies */}
             <Row lg={5} >
                 {movies.map((movie, index) => (
-                    <Col className="d-flex justify-content-center">
+                    <Col className="d-flex justify-content-center" key={index}>
                         <Card style={{width: '16rem'}} className='m-2'>
 
                             <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className='posterImg' />

@@ -8,7 +8,12 @@ import LandingPage from "./Components/LandingPage/LandingPage";
 
 function App() {
 
+    const apiKey = process.env.REACT_APP_API;
 
+    const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
+    const trendingMoviesUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`;
+    const topRatedMoviesUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`;
+    const upcomingMoviesUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`;
 
     // console.log(genres);
 
@@ -16,17 +21,30 @@ function App() {
         <Router>
             <div>
 
-                {/* A <Switch> looks through its children <Route>s and
-              renders the first one that matches the current URL. */}
                 <Switch>
                     <Route exact path="/">
-                        <LandingPage />
+                        <LandingPage
+                            genreUrl={genreUrl}
+                            trendingMoviesUrl={trendingMoviesUrl}
+                            topRatedMoviesUrl={topRatedMoviesUrl}
+                            upcomingMoviesUrl={upcomingMoviesUrl}
+                        />
                     </Route>
-                    <Route path="/about">
-                        <h2>About</h2>
+
+                    <Route exact path={`/trending/view-all`}>
+                        <h3>trending - view all</h3>
                     </Route>
-                    <Route path="/users">
-                        <h2>Users</h2>
+
+                    <Route exact path={`/top-rated/view-all`}>
+                        <h3>top-rated - view all</h3>
+                    </Route>
+
+                    <Route exact path={`/upcoming/view-all`}>
+                        <h3>upcoming - view all</h3>
+                    </Route>
+
+                    <Route exact path="*">
+                        <h1>404 - Not Found !!</h1>
                     </Route>
 
                 </Switch>
