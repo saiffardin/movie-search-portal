@@ -1,13 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Badge, Button, Card} from 'react-bootstrap';
 import {getGenreNameById} from '../../utility/genre';
+import MovieModal from '../MovieModal/MovieModal';
 
 const SingleMovie = (props) => {
 
     const {movie, genres, showDetails} = props;
 
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     const handleMovieDetailsClick = (movie) => {
         console.log('movie:', movie);
+        handleShow();
     }
 
     return (
@@ -68,11 +74,16 @@ const SingleMovie = (props) => {
                         <Button variant="outline-success" onClick={() => handleMovieDetailsClick(movie)}>
                             Show Movie Details
                         </Button>
-
                     </div>
                 }
-
             </Card >
+
+            {/* modal movie details */}
+            <MovieModal
+                show={show}
+                handleClose={handleClose}
+            />
+
         </div>
     );
 };
