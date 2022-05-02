@@ -44,7 +44,7 @@ const ShowAllMovies = (props) => {
 
     const handleInputChange = (e) => {
         // console.log(e.target.value.toLowerCase())
-        setQuery(e.target.value.toLowerCase());
+        setQuery(e.target.value.toLowerCase().trim());
     }
 
     return (
@@ -76,9 +76,17 @@ const ShowAllMovies = (props) => {
                 />
             </div>
 
+            {/* 
+            .filter((item) =>
+                    item.title.toLowerCase().includes(query)
+                )
+            */}
+
             {/* Cards - Movies */}
             <Row lg={5} >
-                {movies.map((movie, index) => (
+                {movies.filter((item) =>
+                    item.title.toLowerCase().includes(query)
+                ).map((movie, index) => (
                     <Col className="d-flex justify-content-center" key={index}>
 
                         <SingleMovie
