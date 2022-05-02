@@ -1,10 +1,12 @@
-/* eslint-disable no-unused-vars */
+
 /* eslint-disable react-hooks/exhaustive-deps */
+import {useEffect, useState} from "react";
 import {
     BrowserRouter as Router, Route, Switch
 } from "react-router-dom";
 import './App.css';
 import LandingPage from "./Components/LandingPage/LandingPage";
+import ShowAllMovies from "./Components/ShowAllMovies/ShowAllMovies";
 
 function App() {
 
@@ -15,6 +17,15 @@ function App() {
     const topRatedMoviesUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`;
     const upcomingMoviesUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`;
 
+    const [genres, setGenres] = useState([]);
+
+    useEffect(() => {
+        fetch(genreUrl)
+            .then((data) => data.json())
+            .then((res) => setGenres(res.genres))
+    }, [])
+
+
     // console.log(genres);
 
     return (
@@ -24,7 +35,7 @@ function App() {
                 <Switch>
                     <Route exact path="/">
                         <LandingPage
-                            genreUrl={genreUrl}
+                            genres={genres}
                             trendingMoviesUrl={trendingMoviesUrl}
                             topRatedMoviesUrl={topRatedMoviesUrl}
                             upcomingMoviesUrl={upcomingMoviesUrl}
@@ -33,14 +44,37 @@ function App() {
 
                     <Route exact path={`/trending/view-all`}>
                         <h3>trending - view all</h3>
+                        {/* show all - trending */}
+                        <ShowAllMovies
+                            genres={genres}
+                            divBg="trending"
+                            sectionTitle="Trending Movies"
+                            url={trendingMoviesUrl}
+                        />
                     </Route>
 
                     <Route exact path={`/top-rated/view-all`}>
                         <h3>top-rated - view all</h3>
+
+                        {/* show all - top-rated */}
+                        <ShowAllMovies
+                            genres={genres}
+                            divBg="top-rated"
+                            sectionTitle="Top Rated Movies"
+                            url={topRatedMoviesUrl}
+                        />
                     </Route>
 
                     <Route exact path={`/upcoming/view-all`}>
                         <h3>upcoming - view all</h3>
+
+                        {/* show all - upcoming */}
+                        <ShowAllMovies
+                            genres={genres}
+                            divBg="upcoming"
+                            sectionTitle="Upcoming Movies"
+                            url={upcomingMoviesUrl}
+                        />
                     </Route>
 
                     <Route exact path="*">

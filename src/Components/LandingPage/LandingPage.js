@@ -12,25 +12,16 @@ const LandingPage = (props) => {
      * 'original_title', 'popularity', 'media_type']
      */
 
-    const {genreUrl, trendingMoviesUrl, topRatedMoviesUrl, upcomingMoviesUrl} = props;
+    const {genres, trendingMoviesUrl, topRatedMoviesUrl, upcomingMoviesUrl} = props;
 
-    // const apiKey = process.env.REACT_APP_API;
 
-    const [genres, setGenres] = useState([]);
+    
     const [trendingMovies, setTrendingMovies] = useState([]);
     const [topRatedMovies, setTopRatedMovies] = useState([]);
     const [upcomingMovies, setUpcomingMovies] = useState([]);
 
-    // const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
-    // const trendingMoviesUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`;
-    // const topRatedMoviesUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`;
-    // const upcomingMoviesUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`;
 
     useEffect(() => {
-
-        fetch(genreUrl)
-            .then((data) => data.json())
-            .then((res) => setGenres(res.genres))
 
         fetch(trendingMoviesUrl)
             .then((data) => data.json())
@@ -77,29 +68,11 @@ const LandingPage = (props) => {
 
             {/* ------------------------------------------------- */}
 
-            {/* show all - trending */}
-            {/* <ShowAllMovies
-                genres={genres}
-                divBg="trending"
-                sectionTitle="Trending Movies"
-                url={trendingMoviesUrl}
-            /> */}
+            
 
-            {/* show all - top-rated */}
-            {/* <ShowAllMovies
-                genres={genres}
-                divBg="top-rated"
-                sectionTitle="Top Rated Movies"
-                url={topRatedMoviesUrl}
-            /> */}
+            
 
-            {/* show all - upcoming */}
-            {/* <ShowAllMovies
-                genres={genres}
-                divBg="upcoming"
-                sectionTitle="Upcoming Movies"
-                url={upcomingMoviesUrl}
-            /> */}
+            
         </div>
     );
 };
