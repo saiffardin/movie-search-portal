@@ -4,6 +4,7 @@ import {
     BrowserRouter as Router, Route, Switch
 } from "react-router-dom";
 import './App.css';
+import LandingPage from "./Components/LandingPage/LandingPage";
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
               renders the first one that matches the current URL. */}
                 <Switch>
                     <Route exact path="/">
-                        <h2>Home</h2>
+                        <LandingPage />
                     </Route>
                     <Route path="/about">
                         <h2>About</h2>

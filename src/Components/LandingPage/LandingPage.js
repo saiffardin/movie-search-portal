@@ -1,5 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from 'react';
+import ShowTenMovies from '../ShowTenMovies/ShowTenMovies';
+
 
 const LandingPage = () => {
     /** data.results er 'keys' - 15
@@ -45,30 +47,31 @@ const LandingPage = () => {
     return (
         <div>
             <h1>Landing Page</h1>
+            
 
             {/* Trending Movies */}
-            {/* <ShowTenMovies
+            <ShowTenMovies
                 genres={genres}
                 divBg="trending"
                 sectionTitle="Trending Movies"
                 movies={trendingMovies}
-            /> */}
+            />
 
             {/* Top Rated Movies */}
-            {/* <ShowTenMovies
+            <ShowTenMovies
                 genres={genres}
                 divBg="top-rated"
                 sectionTitle="Top Rated Movies"
                 movies={topRatedMovies}
-            /> */}
+            />
 
             {/* Upcoming Movies */}
-            {/* <ShowTenMovies
+            <ShowTenMovies
                 genres={genres}
                 divBg="upcoming"
                 sectionTitle="Upcoming Movies"
                 movies={upcomingMovies}
-            /> */}
+            />
 
             {/* ------------------------------------------------- */}
 
