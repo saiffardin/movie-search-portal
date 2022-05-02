@@ -34,6 +34,10 @@ const ShowAllMovies = (props) => {
         // console.log('results:', response.results)
     }
 
+    const handleMovieDetailsClick = (movie) => {
+        console.log('movie:', movie);
+    }
+
     return (
         <div className={`${divBg} w-100 py-3`}>
             {/* Section Title */}
@@ -96,7 +100,7 @@ const ShowAllMovies = (props) => {
 
                             {/* details button */}
                             <div className="d-grid gap-2 p-1">
-                                <Button variant="outline-success" size="lg">
+                                <Button variant="outline-success" size="lg" onClick={() => handleMovieDetailsClick(movie)}>
                                     Show Movie Details
                                 </Button>
 
