@@ -55,9 +55,6 @@ const SingleMovie = (props) => {
 
                         {/* Rating */}
                         <Card.Subtitle className='my-2'>Ratings: <span className=' fw-light' >{movie.vote_average}</span></Card.Subtitle>
-
-
-
                     </div>
 
                 </Card.Body>

@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
-import {Badge, Button, Card, Col, Row} from 'react-bootstrap';
+import {Button, Col, Row} from 'react-bootstrap';
 import {useHistory} from "react-router-dom";
-import {getGenreNameById} from '../../utility/genre';
+import SingleMovie from '../SingleMovie/SingleMovie';
 
 const ShowTenMovies = (props) => {
 
@@ -13,7 +13,7 @@ const ShowTenMovies = (props) => {
         console.log('category:', category)
         history.push(`/${category}/view-all`);
         // window.location.reload();
-        
+
     }
 
     return (
@@ -25,57 +25,14 @@ const ShowTenMovies = (props) => {
             <Row lg={5} >
                 {movies.map((movie, index) => (
                     <Col className="d-flex justify-content-center" key={index}>
-                        <Card style={{width: '16rem'}} className='m-2'>
 
-                            <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className='posterImg' />
-                            <Card.Body>
-                                <Card.Title className='text-center'>{movie.title}</Card.Title>
-
-                                <hr />
-
-                                <div>
-
-                                    {/* Release Date */}
-
-                                    <Card.Subtitle className='my-2'>Release Date: <span className=' fw-light' >{movie.release_date}</span></Card.Subtitle>
-
-                                    <hr />
-
-                                    {/* -------------------------------- */}
-
-                                    {/* Genre */}
-
-                                    <Card.Subtitle className=''>Genre:
-                                        <span className=' fw-light' >
-                                            {
-                                                movie.genre_ids.map((id, indx) => {
-                                                    return (
-                                                        <span key={indx}>
-                                                            {' '}
-                                                            <Badge pill bg="secondary" > {getGenreNameById(genres, id)}</Badge>
-                                                            {' '}
-                                                        </span>
-                                                    )
-                                                })
-                                            }
-                                        </span>
-                                    </Card.Subtitle>
+                        <SingleMovie
+                            movie={movie}
+                            genres={genres}
+                            showDetails={false}
+                        />
 
 
-
-                                    <hr />
-
-
-                                    {/* -------------------------------- */}
-
-                                    {/* Rating */}
-                                    <Card.Subtitle className='my-2'>Ratings: <span className=' fw-light' >{movie.vote_average}</span></Card.Subtitle>
-
-                                </div>
-
-
-                            </Card.Body>
-                        </Card>
                     </Col>
                 ))}
             </Row>
