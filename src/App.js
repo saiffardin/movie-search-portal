@@ -79,13 +79,31 @@ function App() {
                 movies={upcomingMovies}
             /> */}
 
-            <ShowAllMovies
+            {/* ------------------------------------------------- */}
+
+            {/* show all - trending */}
+            {/* <ShowAllMovies
                 genres={genres}
                 divBg="trending"
                 sectionTitle="Trending Movies"
-                currentPage={1}
                 url={trendingMoviesUrl}
-            />
+            /> */}
+
+            {/* show all - top-rated */}
+            {/* <ShowAllMovies
+                genres={genres}
+                divBg="top-rated"
+                sectionTitle="Top Rated Movies"
+                url={topRatedMoviesUrl}
+            /> */}
+
+            {/* show all - upcoming */}
+            {/* <ShowAllMovies
+                genres={genres}
+                divBg="upcoming"
+                sectionTitle="Upcoming Movies"
+                url={upcomingMoviesUrl}
+            /> */}
 
         </div>
     );

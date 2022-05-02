@@ -20,7 +20,7 @@ const ShowAllMovies = (props) => {
             })
     }, [])
 
-    console.log('pageCount:', pageCount);
+    // console.log('pageCount:', pageCount);
 
 
     const handlePageClick = async (data) => {
