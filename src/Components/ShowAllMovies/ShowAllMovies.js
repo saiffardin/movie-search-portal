@@ -22,7 +22,6 @@ const ShowAllMovies = (props) => {
 
     // console.log('pageCount:', pageCount);
 
-
     const handlePageClick = async (data) => {
 
         let currentPage = data.selected + 1;
@@ -35,11 +34,10 @@ const ShowAllMovies = (props) => {
         // console.log('results:', response.results)
     }
 
-
     return (
         <div className={`${divBg} w-100 py-3`}>
             {/* Section Title */}
-            <h1 className={`text-center ${divBg !== 'top-rated' && 'text-white'}`}>{sectionTitle}</h1>
+            <h1 className={`text-center ${divBg !== 'top-rated' && 'text-white'}`}>All {sectionTitle}</h1>
 
             {/* Cards - Movies */}
             <Row lg={5} >

@@ -39,8 +39,6 @@ const LandingPage = (props) => {
 
     return (
         <div>
-            <h1>Landing Page</h1>
-
 
             {/* Trending Movies */}
             <ShowTenMovies
@@ -65,13 +63,6 @@ const LandingPage = (props) => {
                 sectionTitle="Upcoming Movies"
                 movies={upcomingMovies}
             />
-
-            {/* ------------------------------------------------- */}
-
-            
-
-            
-
             
         </div>
     );

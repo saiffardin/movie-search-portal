@@ -25,13 +25,11 @@ function App() {
             .then((res) => setGenres(res.genres))
     }, [])
 
-
     // console.log(genres);
 
     return (
         <Router>
             <div>
-
                 <Switch>
                     <Route exact path="/">
                         <LandingPage
@@ -43,7 +41,6 @@ function App() {
                     </Route>
 
                     <Route exact path={`/trending/view-all`}>
-                        <h3>trending - view all</h3>
                         {/* show all - trending */}
                         <ShowAllMovies
                             genres={genres}
@@ -54,8 +51,6 @@ function App() {
                     </Route>
 
                     <Route exact path={`/top-rated/view-all`}>
-                        <h3>top-rated - view all</h3>
-
                         {/* show all - top-rated */}
                         <ShowAllMovies
                             genres={genres}
@@ -66,8 +61,6 @@ function App() {
                     </Route>
 
                     <Route exact path={`/upcoming/view-all`}>
-                        <h3>upcoming - view all</h3>
-
                         {/* show all - upcoming */}
                         <ShowAllMovies
                             genres={genres}
@@ -80,13 +73,10 @@ function App() {
                     <Route exact path="*">
                         <h1>404 - Not Found !!</h1>
                     </Route>
-
                 </Switch>
             </div>
         </Router>
     );
 }
-
-
 
 export default App;
