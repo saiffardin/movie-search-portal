@@ -13,6 +13,7 @@ const ShowAllMovies = (props) => {
 
     const [filter, setFilter] = useState('Select Filter');
     const [query, setQuery] = useState("");
+    // const [searchResult, setSearchResult] = useState([]);
 
     useEffect(() => {
         fetch(url)
@@ -45,6 +46,8 @@ const ShowAllMovies = (props) => {
     const handleInputChange = (e) => {
         // console.log(e.target.value.toLowerCase())
         setQuery(e.target.value.toLowerCase().trim());
+
+
     }
 
     return (
@@ -62,7 +65,7 @@ const ShowAllMovies = (props) => {
                     size="sm"
                 >
                     <Dropdown.Item eventKey="Movie Name">Movie Name</Dropdown.Item>
-                    <Dropdown.Item eventKey="Release Date">Release Date</Dropdown.Item>
+                    <Dropdown.Item eventKey="Release Year">Release Year</Dropdown.Item>
                     <Dropdown.Item eventKey="Genre">Genre</Dropdown.Item>
                 </DropdownButton>
 
@@ -82,11 +85,21 @@ const ShowAllMovies = (props) => {
                 )
             */}
 
+            {/* movie['release_date'].slice(0,4) === '2022' */}
+
+            {/* movie['genre_ids'] === [28, 12, 10751] */}
+
             {/* Cards - Movies */}
             <Row lg={5} >
-                {movies.filter((item) =>
-                    item.title.toLowerCase().includes(query)
-                ).map((movie, index) => (
+                {movies.filter((item) => {
+                    if (filter === 'Movie Name')
+                        return item.title.toLowerCase().includes(query)
+
+                    else if (filter === 'Release Year')
+                        return item.release_date.slice(0, 4).includes(query)
+
+                    else return true
+                }).map((movie, index) => (
                     <Col className="d-flex justify-content-center" key={index}>
 
                         <SingleMovie
