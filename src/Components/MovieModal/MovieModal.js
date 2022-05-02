@@ -1,22 +1,113 @@
 import React from 'react';
-import {Button, Modal} from 'react-bootstrap';
+import {Badge, Button, Card, Modal} from 'react-bootstrap';
+import {getGenreNameById} from '../../utility/genre';
 
 const MovieModal = (props) => {
 
-    const {show, handleClose} = props;
+    const {show, handleClose, movie, genres} = props;
 
     return (
         <div>
             <Modal fullscreen={true} show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                {/* <Modal.Header closeButton >
+                    <Modal.Title>{movie.title}</Modal.Title>
+                </Modal.Header> */}
+
+                <Modal.Body>
+                    <Card style={{width: '', border: 'none'}} className='d-flex align-items-center'>
+
+                        <div className='d-flex justify-content-center'>
+                            <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className='' style={{'width':'400px'}} />
+                            <Card.Body className='m-2'>
+                                <Card.Title >{movie.title}</Card.Title>
+
+                                <hr />
+
+                                <div>
+
+                                    {/* Release Date */}
+                                    <Card.Subtitle className='my-2'>Release Date:
+                                        <span className=' fw-light' > {movie.release_date}</span>
+                                    </Card.Subtitle>
+                                    <hr />
+
+                                    {/* -------------------------------- */}
+
+
+                                    {/* Genre */}
+                                    <Card.Subtitle className=''>Genre:
+                                        <span className=' fw-light' >
+                                            {
+                                                movie.genre_ids.map((id, indx) => {
+                                                    return (
+                                                        <span key={indx}>
+                                                            {' '}
+                                                            <Badge pill bg="secondary" > {getGenreNameById(genres, id)}</Badge>
+                                                            {' '}
+                                                        </span>
+                                                    )
+                                                })
+                                            }
+                                        </span>
+                                    </Card.Subtitle>
+                                    <hr />
+
+                                    {/* -------------------------------- */}
+                                    {/* original_language */}
+                                    <Card.Subtitle className='my-2'>Original Language:
+                                        <span className=' fw-light' > {movie.original_language}</span>
+                                    </Card.Subtitle>
+                                    <hr />
+
+                                    {/* -------------------------------- */}
+                                    {/* original_title */}
+                                    <Card.Subtitle className='my-2'>Original Title:
+                                        <span className='fw-light' > {movie.original_title}</span>
+                                    </Card.Subtitle>
+                                    <hr />
+
+                                    {/* -------------------------------- */}
+                                    {/* Overview */}
+                                    <Card.Subtitle className='my-2'>Overview:
+                                        <span className='w-lg-50 fw-light' > {movie.overview}</span>
+                                    </Card.Subtitle>
+                                    <hr />
+
+                                    {/* -------------------------------- */}
+                                    {/* popularity */}
+                                    <Card.Subtitle className='my-2'>Popularity:
+                                        <span className=' fw-light' > {movie.popularity}</span>
+                                    </Card.Subtitle>
+                                    <hr />
+
+                                    {/* -------------------------------- */}
+
+                                    {/* Rating */}
+                                    <Card.Subtitle className='my-2'>Ratings:
+                                        <span className=' fw-light' > {movie.vote_average}</span>
+                                    </Card.Subtitle>
+                                    <hr />
+
+                                    {/* -------------------------------- */}
+                                    {/* vote_count */}
+                                    <Card.Subtitle className='my-2'>Vote Count:
+                                        <span className=' fw-light' > {movie.vote_count}</span>
+                                    </Card.Subtitle>
+
+
+                                </div>
+
+                            </Card.Body>
+                        </div>
+
+                    </Card >
+                </Modal.Body>
+
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                    <Button variant="danger" className='m-3' onClick={handleClose}>
                         Close
                     </Button>
-                    
+
                 </Modal.Footer>
             </Modal>
         </div>

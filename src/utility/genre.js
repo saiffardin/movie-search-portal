@@ -16,6 +16,14 @@ export const getGenreNameById = (arr, id) => {
 
 
 /*
+{
+    
+    
+}
+*/
+
+
+/*
 In movie detail page you have to show 
     movie poster, 
     title, 

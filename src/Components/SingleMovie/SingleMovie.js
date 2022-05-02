@@ -82,6 +82,8 @@ const SingleMovie = (props) => {
             <MovieModal
                 show={show}
                 handleClose={handleClose}
+                movie={movie}
+                genres={genres}
             />
 
         </div>
