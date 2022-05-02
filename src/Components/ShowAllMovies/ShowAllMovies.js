@@ -31,6 +31,7 @@ const ShowAllMovies = (props) => {
         const res = await fetch(`${url}&page=${currentPage}`);
         const response = await res.json();
         setMovies(response.results);
+        window.scrollTo(0, 0);
         // console.log('results:', response.results)
     }
 
