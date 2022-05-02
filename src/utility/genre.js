@@ -4,6 +4,12 @@ export const getGenreNameById = (arr, id) => {
     return found?.name;
 }
 
+export const getAllGenreNameByIdArray = (arr, idArray) => {
+    let genreNamesArr = idArray.map(id => getGenreNameById(arr, id).toLowerCase())
+    // console.log('genreNamesArr:', genreNamesArr)
+    return genreNamesArr;
+}
+
 /* ja ja baad dibo from showing movie details
     {
         "adult": false,

@@ -3,6 +3,7 @@
 import React, {useEffect, useState} from 'react';
 import {Col, Dropdown, DropdownButton, Row} from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
+import {getAllGenreNameByIdArray} from '../../utility/genre';
 import SingleMovie from '../SingleMovie/SingleMovie';
 
 const ShowAllMovies = (props) => {
@@ -97,6 +98,16 @@ const ShowAllMovies = (props) => {
 
                     else if (filter === 'Release Year')
                         return item.release_date.slice(0, 4).includes(query)
+
+                    else if (filter === 'Genre') {
+                        let genreNames = getAllGenreNameByIdArray(genres, item.genre_ids);
+                        // console.log('query:', query);
+
+                        // arr.map(item => item.includes('action')).includes(true)
+                        // genreNames.map(item => item.includes(query)).includes(true)
+
+                        return genreNames.map(item => item.includes(query)).includes(true)
+                    }
 
                     else return true
                 }).map((movie, index) => (
