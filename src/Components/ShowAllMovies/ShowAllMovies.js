@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import React, {useEffect, useState} from 'react';
-import {Badge, Button, Card, Col, Row} from 'react-bootstrap';
+import {Col, Row} from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
-import {getGenreNameById} from '../../utility/genre';
+import SingleMovie from '../SingleMovie/SingleMovie';
 
 const ShowAllMovies = (props) => {
     const {genres, divBg, sectionTitle, url} = props;
@@ -34,9 +34,6 @@ const ShowAllMovies = (props) => {
         // console.log('results:', response.results)
     }
 
-    const handleMovieDetailsClick = (movie) => {
-        console.log('movie:', movie);
-    }
 
     return (
         <div className={`${divBg} w-100 py-3`}>
@@ -47,65 +44,13 @@ const ShowAllMovies = (props) => {
             <Row lg={5} >
                 {movies.map((movie, index) => (
                     <Col className="d-flex justify-content-center" key={index}>
-                        <Card style={{width: '16rem'}} className='m-2'>
 
-                            <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className='posterImg' />
-                            <Card.Body>
-                                <Card.Title className='text-center'>{movie.title}</Card.Title>
-
-                                <hr />
-
-                                <div>
-
-                                    {/* Release Date */}
-
-                                    <Card.Subtitle className='my-2'>Release Date: <span className=' fw-light' >{movie.release_date}</span></Card.Subtitle>
-
-                                    <hr />
-
-                                    {/* -------------------------------- */}
-
-                                    {/* Genre */}
-
-                                    <Card.Subtitle className=''>Genre:
-                                        <span className=' fw-light' >
-                                            {
-                                                movie.genre_ids.map((id, indx) => {
-                                                    return (
-                                                        <span key={indx}>
-                                                            {' '}
-                                                            <Badge pill bg="secondary" > {getGenreNameById(genres, id)}</Badge>
-                                                            {' '}
-                                                        </span>
-                                                    )
-                                                })
-                                            }
-                                        </span>
-                                    </Card.Subtitle>
-
-                                    <hr />
-
-
-                                    {/* -------------------------------- */}
-
-                                    {/* Rating */}
-                                    <Card.Subtitle className='my-2'>Ratings: <span className=' fw-light' >{movie.vote_average}</span></Card.Subtitle>
-
-
-
-                                </div>
-
-                            </Card.Body>
-
-
-                            {/* details button */}
-                            <div className="d-grid gap-2 p-1">
-                                <Button variant="outline-success" onClick={() => handleMovieDetailsClick(movie)}>
-                                    Show Movie Details
-                                </Button>
-
-                            </div>
-                        </Card >
+                        <SingleMovie
+                            movie={movie}
+                            genres={genres}
+                            showDetails={true}
+                        />
+                       
                     </Col >
                 ))}
             </Row >
