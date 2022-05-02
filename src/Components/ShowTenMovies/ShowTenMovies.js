@@ -10,7 +10,7 @@ const ShowTenMovies = (props) => {
     let history = useHistory();
 
     const handleViewAllClick = (category) => {
-        console.log('category:', category)
+        // console.log('category:', category)
         history.push(`/${category}/view-all`);
         // window.location.reload();
 

@@ -12,7 +12,7 @@ const SingleMovie = (props) => {
     const handleShow = () => setShow(true);
 
     const handleMovieDetailsClick = (movie) => {
-        console.log('movie:', movie);
+        // console.log('movie:', movie);
         handleShow();
     }
 

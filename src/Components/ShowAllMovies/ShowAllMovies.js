@@ -40,7 +40,7 @@ const ShowAllMovies = (props) => {
     }
 
     const handleSelectFilter = (e) => {
-        console.log(e);
+        // console.log(e);
         setFilter(e)
     }
 
