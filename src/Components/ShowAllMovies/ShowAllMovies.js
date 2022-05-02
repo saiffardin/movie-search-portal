@@ -55,7 +55,7 @@ const ShowAllMovies = (props) => {
 
                                 <hr />
 
-                                <Card.Text>
+                                <div>
 
                                     {/* Release Date */}
 
@@ -74,7 +74,7 @@ const ShowAllMovies = (props) => {
                                                     return (
                                                         <span key={indx}>
                                                             {' '}
-                                                            <Badge Badge pill bg="secondary" > {getGenreNameById(genres, id)}</Badge>
+                                                            <Badge pill bg="secondary" > {getGenreNameById(genres, id)}</Badge>
                                                             {' '}
                                                         </span>
                                                     )
@@ -93,14 +93,14 @@ const ShowAllMovies = (props) => {
 
 
 
-                                </Card.Text>
+                                </div>
 
                             </Card.Body>
 
 
                             {/* details button */}
                             <div className="d-grid gap-2 p-1">
-                                <Button variant="outline-success" size="lg" onClick={() => handleMovieDetailsClick(movie)}>
+                                <Button variant="outline-success" onClick={() => handleMovieDetailsClick(movie)}>
                                     Show Movie Details
                                 </Button>
 
@@ -111,7 +111,7 @@ const ShowAllMovies = (props) => {
             </Row >
 
             {/* pagination */}
-            <div div className='mt-4' >
+            <div className='mt-4' >
                 <ReactPaginate
                     previousLabel={'previous'}
                     nextLabel={'next'}

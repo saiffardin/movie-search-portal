@@ -33,7 +33,7 @@ const ShowTenMovies = (props) => {
 
                                 <hr />
 
-                                <Card.Text>
+                                <div>
 
                                     {/* Release Date */}
 
@@ -52,7 +52,7 @@ const ShowTenMovies = (props) => {
                                                     return (
                                                         <span key={indx}>
                                                             {' '}
-                                                            <Badge Badge pill bg="secondary" > {getGenreNameById(genres, id)}</Badge>
+                                                            <Badge pill bg="secondary" > {getGenreNameById(genres, id)}</Badge>
                                                             {' '}
                                                         </span>
                                                     )
@@ -71,7 +71,7 @@ const ShowTenMovies = (props) => {
                                     {/* Rating */}
                                     <Card.Subtitle className='my-2'>Ratings: <span className=' fw-light' >{movie.vote_average}</span></Card.Subtitle>
 
-                                </Card.Text>
+                                </div>
 
 
                             </Card.Body>
