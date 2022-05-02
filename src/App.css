@@ -20,3 +20,7 @@ html {
 .upcoming{
     background-image: linear-gradient(to right, #332525 0%, rgb(44, 76, 62) 100%);
 }
+
+.search {
+    border-radius: 5px;
+}
