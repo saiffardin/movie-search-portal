@@ -30,7 +30,7 @@ const ShowAllMovies = (props) => {
     const handlePageClick = async (data) => {
 
         let currentPage = data.selected + 1;
-        console.log('currentPage:', currentPage);
+        // console.log('currentPage:', currentPage);
 
         const res = await fetch(`${url}&page=${currentPage}`);
         const response = await res.json();
