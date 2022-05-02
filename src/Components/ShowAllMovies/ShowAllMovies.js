@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import React, {useEffect, useState} from 'react';
-import {Col, Dropdown, Row} from 'react-bootstrap';
+import {Col, Dropdown, DropdownButton, Row} from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
 import SingleMovie from '../SingleMovie/SingleMovie';
 
@@ -10,6 +10,9 @@ const ShowAllMovies = (props) => {
 
     const [movies, setMovies] = useState([]);
     const [pageCount, setPageCount] = useState(0);
+
+    const [filter, setFilter] = useState('Select Filter');
+    const [query, setQuery] = useState("");
 
     useEffect(() => {
         fetch(url)
@@ -34,6 +37,15 @@ const ShowAllMovies = (props) => {
         // console.log('results:', response.results)
     }
 
+    const handleSelectFilter = (e) => {
+        console.log(e);
+        setFilter(e)
+    }
+
+    const handleInputChange = (e) => {
+        // console.log(e.target.value.toLowerCase())
+        setQuery(e.target.value.toLowerCase());
+    }
 
     return (
         <div className={`${divBg} w-100 py-3`}>
@@ -41,21 +53,26 @@ const ShowAllMovies = (props) => {
             <h1 className={`text-center ${divBg !== 'top-rated' && 'text-white'}`}>All {sectionTitle}</h1>
 
             <div className='d-flex justify-content-center'>
-                <Dropdown className='m-2'>
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        Filter By
-                    </Dropdown.Toggle>
+                {/* Dropdown Filter */}
+                <DropdownButton
+                    className='m-2'
+                    title={filter}
+                    variant='success'
+                    onSelect={handleSelectFilter}
+                    size="sm"
+                >
+                    <Dropdown.Item eventKey="Movie Name">Movie Name</Dropdown.Item>
+                    <Dropdown.Item eventKey="Release Date">Release Date</Dropdown.Item>
+                    <Dropdown.Item eventKey="Genre">Genre</Dropdown.Item>
+                </DropdownButton>
 
-                    <Dropdown.Menu>
-                        <Dropdown.Item>Movie Name</Dropdown.Item>
-                        <Dropdown.Item>Release Date</Dropdown.Item>
-                        <Dropdown.Item>Genre</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
 
+                {/* Search */}
                 <input
+                    readOnly={filter === 'Select Filter' ? true : false}
                     className="search m-2"
                     placeholder="Search..."
+                    onChange={handleInputChange}
                 />
             </div>
 
