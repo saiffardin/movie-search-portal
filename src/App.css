@@ -24,3 +24,22 @@ html {
 .search {
     border-radius: 5px;
 }
+
+
+@media only screen and (max-width: 700px) {
+    .modalCard {
+      /* background-color: lightblue; */
+      display: flex;
+      flex-direction: column;
+      /* text-align: start; */
+    }
+
+    .modalImg{
+        width: 15rem !important;
+        margin: auto;
+    }
+
+    .modalCloseBtn{
+        margin: auto !important;
+    }
+  }

@@ -13,17 +13,17 @@ const MovieModal = (props) => {
                     <Modal.Title>{movie.title}</Modal.Title>
                 </Modal.Header> */}
 
-                <Modal.Body>
+                <Modal.Body className='d-flex align-items-center justify-content-center'>
                     <Card style={{width: '', border: 'none'}} className='d-flex align-items-center'>
 
-                        <div className='d-flex justify-content-center'>
-                            <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className='' style={{'width':'400px'}} />
+                        <div className='d-flex justify-content-center modalCard'>
+                            <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className='modalImg' style={{'width': '400px'}} />
                             <Card.Body className='m-2'>
                                 <Card.Title >{movie.title}</Card.Title>
 
-                                <hr />
+                                <hr className='w-75' />
 
-                                <div>
+                                <div className='w-75'>
 
                                     {/* Release Date */}
                                     <Card.Subtitle className='my-2'>Release Date:
@@ -69,9 +69,9 @@ const MovieModal = (props) => {
                                     {/* -------------------------------- */}
                                     {/* Overview */}
                                     <Card.Subtitle className='my-2'>Overview:
-                                        <span className='w-lg-50 fw-light' > {movie.overview}</span>
+                                        <span className=' fw-light' > {movie.overview}</span>
                                     </Card.Subtitle>
-                                    <hr />
+                                    <hr className='' />
 
                                     {/* -------------------------------- */}
                                     {/* popularity */}
@@ -104,7 +104,7 @@ const MovieModal = (props) => {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="danger" className='m-3' onClick={handleClose}>
+                    <Button variant="danger" className='m-3 modalCloseBtn' onClick={handleClose}>
                         Close
                     </Button>
 
