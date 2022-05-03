@@ -45,7 +45,7 @@ const SingleMovie = (props) => {
                                         return (
                                             <span key={indx}>
                                                 {' '}
-                                                <Badge pill bg="secondary" > {getGenreNameById(genres, id)}</Badge>
+                                                <Badge pill bg="secondary" className='my-1' > {getGenreNameById(genres, id)}</Badge>
                                                 {' '}
                                             </span>
                                         )

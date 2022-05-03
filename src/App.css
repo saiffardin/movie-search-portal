@@ -6,6 +6,11 @@ html {
     overflow-x: hidden;
 }
 
+body{
+    font-family: , sans-serif;
+
+}
+
 .trending{
     background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
     /* color: white; */
