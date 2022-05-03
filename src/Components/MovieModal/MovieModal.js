@@ -21,9 +21,9 @@ const MovieModal = (props) => {
                             <Card.Body className='m-2'>
                                 <Card.Title >{movie.title}</Card.Title>
 
-                                <hr className='w-75' />
+                                <hr className='' />
 
-                                <div className='w-75'>
+                                <div className=''>
 
                                     {/* Release Date */}
                                     <Card.Subtitle className='my-2'>Release Date:
@@ -104,7 +104,7 @@ const MovieModal = (props) => {
                 </Modal.Body>
 
                 <Modal.Footer>
-                    <Button variant="danger" className='m-3 modalCloseBtn' onClick={handleClose}>
+                    <Button variant="danger" className='m-3 modalCloseBtn m-auto' onClick={handleClose}>
                         Close
                     </Button>
 
