@@ -25,15 +25,15 @@ const LandingPage = (props) => {
 
         fetch(trendingMoviesUrl)
             .then((data) => data.json())
-            .then((res) => setTrendingMovies(res.results.slice(0, 10)))
+            .then((res) => setTrendingMovies(res.results.slice(0, 8)))
 
         fetch(topRatedMoviesUrl)
             .then((data) => data.json())
-            .then((res) => setTopRatedMovies(res.results.slice(0, 10)))
+            .then((res) => setTopRatedMovies(res.results.slice(0, 8)))
 
         fetch(upcomingMoviesUrl)
             .then((data) => data.json())
-            .then((res) => setUpcomingMovies(res.results.slice(0, 10)))
+            .then((res) => setUpcomingMovies(res.results.slice(0, 8)))
     }, [])
 
 

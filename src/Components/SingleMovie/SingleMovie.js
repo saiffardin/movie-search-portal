@@ -17,10 +17,10 @@ const SingleMovie = (props) => {
     }
 
     return (
-        <div className="d-flex justify-content-center">
-            <Card style={{width: '16rem'}} className='m-2'>
+        <div className="d-flex justify-content-center my-3">
+            <Card style={{width: '15rem'}} className='m-2'>
 
-                <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className='posterImg' />
+                <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className='' />
                 <Card.Body>
                     <Card.Title className='text-center'>{movie.title}</Card.Title>
 

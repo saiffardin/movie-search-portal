@@ -18,30 +18,35 @@ const ShowTenMovies = (props) => {
 
     return (
         <div className={`${divBg} w-100 py-3`}>
-            {/* Section Title */}
-            <h1 className={`text-center ${divBg !== 'top-rated' && 'text-white'}`}>{sectionTitle}</h1>
 
-            {/* Cards - Movies */}
-            <Row lg={5} >
-                {movies.map((movie, index) => (
-                    <Col className="d-flex justify-content-center" key={index}>
-
-                        <SingleMovie
-                            movie={movie}
-                            genres={genres}
-                            showDetails={false}
-                        />
+            <div className="container">
 
 
-                    </Col>
-                ))}
-            </Row>
+                {/* Section Title */}
+                <h1 className={`text-center ${divBg !== 'top-rated' && 'text-white'}`}>{sectionTitle}</h1>
 
-            {/* view all button */}
-            <div className=" text-center m-3">
-                <Button variant="danger" size="lg" onClick={() => handleViewAllClick(divBg)}>
-                    View All {sectionTitle}
-                </Button>
+                {/* Cards - Movies */}
+                <Row>
+                    {movies.map((movie, index) => (
+                        <Col className="d-flex justify-content-center" key={index}>
+
+                            <SingleMovie
+                                movie={movie}
+                                genres={genres}
+                                showDetails={false}
+                            />
+
+                        </Col>
+                    ))}
+                </Row>
+
+                {/* view all button */}
+                <div className=" text-center m-3">
+                    <Button variant="danger" size="lg" onClick={() => handleViewAllClick(divBg)}>
+                        View All {sectionTitle}
+                    </Button>
+
+                </div>
 
             </div>
 
