@@ -47,8 +47,6 @@ const ShowAllMovies = (props) => {
     const handleInputChange = (e) => {
         // console.log(e.target.value.toLowerCase())
         setQuery(e.target.value.toLowerCase().trim());
-
-
     }
 
     return (
@@ -83,18 +81,7 @@ const ShowAllMovies = (props) => {
                     />
                 </div>
 
-                {/* 
-            .filter((item) =>
-                    item.title.toLowerCase().includes(query)
-                )
-            */}
-
-                {/* movie['release_date'].slice(0,4) === '2022' */}
-
-                {/* movie['genre_ids'] === [28, 12, 10751] */}
-
-                {/* Cards - Movies */}
-                <Row  >
+                <Row>
                     {movies.filter((item) => {
                         if (filter === 'Movie Name')
                             return item.title.toLowerCase().includes(query)
@@ -104,32 +91,25 @@ const ShowAllMovies = (props) => {
 
                         else if (filter === 'Genre') {
                             let genreNames = getAllGenreNameByIdArray(genres, item.genre_ids);
-                            // console.log('query:', query);
-
-                            // arr.map(item => item.includes('action')).includes(true)
-                            // genreNames.map(item => item.includes(query)).includes(true)
 
                             return genreNames.map(item => item.includes(query)).includes(true)
                         }
-
                         else return true
                     }).map((movie, index) => (
                         <Col className="d-flex justify-content-center" key={index}>
-
                             <SingleMovie
                                 movie={movie}
                                 genres={genres}
                                 showDetails={true}
                             />
-
-
                         </Col >
                     ))}
                 </Row >
 
                 {/* pagination */}
-                <div className='mt-4 ' >
+                <div className='mt-4 pg' >
                     <ReactPaginate
+
                         previousLabel={'previous'}
                         nextLabel={'next'}
                         breakLabel={'...'}
