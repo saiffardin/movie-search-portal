@@ -17,7 +17,7 @@ const MovieModal = (props) => {
                     <Card style={{width: '', border: 'none'}} className='d-flex align-items-center'>
 
                         <div className='d-flex justify-content-center modalCard'>
-                            <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className='modalImg' style={{'width': '400px'}} />
+                            <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className='modalImg ' style={{'width': '400px'}} />
                             <Card.Body className='m-2'>
                                 <Card.Title >{movie.title}</Card.Title>
 

@@ -46,8 +46,10 @@ body{
 
     .modalImg{
         width: 15rem !important;
+        /* height:100% !important; */
         margin: auto;
+        margin-top: 300px;
     }
 
    
-  }
+}
