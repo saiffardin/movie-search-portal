@@ -59,6 +59,7 @@ const ShowAllMovies = (props) => {
                     >
                         <Dropdown.Item eventKey="Movie Name">Movie Name</Dropdown.Item>
                         <Dropdown.Item eventKey="Release Year">Release Year</Dropdown.Item>
+                        <Dropdown.Item eventKey="Overview">Overview</Dropdown.Item>
                         <Dropdown.Item eventKey="Genre">Genre</Dropdown.Item>
                     </DropdownButton>
 
@@ -75,6 +76,9 @@ const ShowAllMovies = (props) => {
                     {movies.filter((item) => {
                         if (filter === 'Movie Name')
                             return item.title.toLowerCase().includes(query)
+
+                        else if (filter === 'Overview')
+                            return item.overview.toLowerCase().includes(query)
 
                         else if (filter === 'Release Year')
                             return item.release_date.slice(0, 4).includes(query)
