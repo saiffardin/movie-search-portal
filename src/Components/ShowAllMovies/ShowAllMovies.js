@@ -14,7 +14,7 @@ const ShowAllMovies = (props) => {
 
     const [filter, setFilter] = useState('Select Filter');
     const [query, setQuery] = useState("");
-    // const [searchResult, setSearchResult] = useState([]);
+   
 
     useEffect(() => {
         fetch(url)
@@ -25,27 +25,22 @@ const ShowAllMovies = (props) => {
             })
     }, [])
 
-    // console.log('pageCount:', pageCount);
 
     const handlePageClick = async (data) => {
 
         let currentPage = data.selected + 1;
-        // console.log('currentPage:', currentPage);
 
         const res = await fetch(`${url}&page=${currentPage}`);
         const response = await res.json();
         setMovies(response.results);
         window.scrollTo(0, 0);
-        // console.log('results:', response.results)
     }
 
     const handleSelectFilter = (e) => {
-        // console.log(e);
         setFilter(e)
     }
 
     const handleInputChange = (e) => {
-        // console.log(e.target.value.toLowerCase())
         setQuery(e.target.value.toLowerCase().trim());
     }
 

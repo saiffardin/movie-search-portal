@@ -4,7 +4,6 @@ import {getGenreNameById} from '../../utility/genre';
 import MovieModal from '../MovieModal/MovieModal';
 
 const SingleMovie = (props) => {
-
     const {movie, genres, showDetails} = props;
 
     const [show, setShow] = useState(false);
@@ -12,7 +11,6 @@ const SingleMovie = (props) => {
     const handleShow = () => setShow(true);
 
     const handleMovieDetailsClick = (movie) => {
-        // console.log('movie:', movie);
         handleShow();
     }
 
@@ -23,21 +21,15 @@ const SingleMovie = (props) => {
                 <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className='' />
                 <Card.Body>
                     <Card.Title className='text-center'>{movie.title}</Card.Title>
-
                     <hr />
 
                     <div>
 
                         {/* Release Date */}
-
                         <Card.Subtitle className='my-2'>Release Date: <span className=' fw-light' >{movie.release_date}</span></Card.Subtitle>
-
                         <hr />
 
-                        {/* -------------------------------- */}
-
                         {/* Genre */}
-
                         <Card.Subtitle className=''>Genre:
                             <span className=' fw-light' >
                                 {
@@ -53,11 +45,7 @@ const SingleMovie = (props) => {
                                 }
                             </span>
                         </Card.Subtitle>
-
                         <hr />
-
-
-                        {/* -------------------------------- */}
 
                         {/* Rating */}
                         <Card.Subtitle className='my-2'>Ratings: <span className=' fw-light' >{movie.vote_average}</span></Card.Subtitle>
@@ -65,9 +53,7 @@ const SingleMovie = (props) => {
 
                 </Card.Body>
 
-
                 {/* details button */}
-
                 {
                     showDetails &&
                     <div className="d-grid gap-2 p-1">
@@ -85,7 +71,7 @@ const SingleMovie = (props) => {
                 movie={movie}
                 genres={genres}
             />
-
+            
         </div>
     );
 };

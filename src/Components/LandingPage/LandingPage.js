@@ -2,24 +2,13 @@
 import React, {useEffect, useState} from 'react';
 import ShowTenMovies from '../ShowTenMovies/ShowTenMovies';
 
-
 const LandingPage = (props) => {
-    /** data.results er 'keys' - 15
-     * ['id', 'video', 'vote_average', 
-     * 'overview', 'release_date', 'title', 
-     * 'adult', 'backdrop_path', 'vote_count', '
-     * genre_ids', 'poster_path', 'original_language', 
-     * 'original_title', 'popularity', 'media_type']
-     */
 
     const {genres, trendingMoviesUrl, topRatedMoviesUrl, upcomingMoviesUrl} = props;
 
-
-    
     const [trendingMovies, setTrendingMovies] = useState([]);
     const [topRatedMovies, setTopRatedMovies] = useState([]);
     const [upcomingMovies, setUpcomingMovies] = useState([]);
-
 
     useEffect(() => {
 

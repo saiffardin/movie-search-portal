@@ -1,4 +1,3 @@
-
 /* eslint-disable react-hooks/exhaustive-deps */
 import {useEffect, useState} from "react";
 import {
@@ -13,8 +12,11 @@ function App() {
     const apiKey = process.env.REACT_APP_API;
 
     const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
+
     const trendingMoviesUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`;
+
     const topRatedMoviesUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`;
+    
     const upcomingMoviesUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`;
 
     const [genres, setGenres] = useState([]);
@@ -24,8 +26,6 @@ function App() {
             .then((data) => data.json())
             .then((res) => setGenres(res.genres))
     }, [])
-
-    // console.log(genres);
 
     return (
         <Router>

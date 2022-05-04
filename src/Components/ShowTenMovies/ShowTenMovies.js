@@ -10,17 +10,13 @@ const ShowTenMovies = (props) => {
     let history = useHistory();
 
     const handleViewAllClick = (category) => {
-        // console.log('category:', category)
         history.push(`/${category}/view-all`);
-        // window.location.reload();
-
     }
 
     return (
         <div className={`${divBg} w-100 py-3`}>
 
             <div className="container">
-
 
                 {/* Section Title */}
                 <h1 className={`text-center ${divBg !== 'top-rated' && 'text-white'}`}>{sectionTitle}</h1>
@@ -29,13 +25,11 @@ const ShowTenMovies = (props) => {
                 <Row>
                     {movies.map((movie, index) => (
                         <Col className="d-flex justify-content-center" key={index}>
-
                             <SingleMovie
                                 movie={movie}
                                 genres={genres}
                                 showDetails={false}
                             />
-
                         </Col>
                     ))}
                 </Row>
@@ -45,7 +39,6 @@ const ShowTenMovies = (props) => {
                     <Button variant="danger" size="lg" onClick={() => handleViewAllClick(divBg)}>
                         View All {sectionTitle}
                     </Button>
-
                 </div>
 
             </div>

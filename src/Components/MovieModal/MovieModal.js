@@ -9,9 +9,6 @@ const MovieModal = (props) => {
     return (
         <div>
             <Modal fullscreen={true} show={show} onHide={handleClose}>
-                {/* <Modal.Header closeButton >
-                    <Modal.Title>{movie.title}</Modal.Title>
-                </Modal.Header> */}
 
                 <Modal.Body className='d-flex align-items-center justify-content-center'>
                     <Card style={{width: '', border: 'none'}} className='d-flex align-items-center'>
@@ -20,19 +17,15 @@ const MovieModal = (props) => {
                             <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className='modalImg ' style={{'width': '400px'}} />
                             <Card.Body className='m-2'>
                                 <Card.Title >{movie.title}</Card.Title>
+                                <hr/>
 
-                                <hr className='' />
-
-                                <div className=''>
+                                <div>
 
                                     {/* Release Date */}
                                     <Card.Subtitle className='my-2'>Release Date:
                                         <span className=' fw-light' > {movie.release_date}</span>
                                     </Card.Subtitle>
                                     <hr />
-
-                                    {/* -------------------------------- */}
-
 
                                     {/* Genre */}
                                     <Card.Subtitle className=''>Genre:
@@ -52,35 +45,29 @@ const MovieModal = (props) => {
                                     </Card.Subtitle>
                                     <hr />
 
-                                    {/* -------------------------------- */}
                                     {/* original_language */}
                                     <Card.Subtitle className='my-2'>Original Language:
                                         <span className=' fw-light' > {movie.original_language}</span>
                                     </Card.Subtitle>
                                     <hr />
 
-                                    {/* -------------------------------- */}
                                     {/* original_title */}
                                     <Card.Subtitle className='my-2'>Original Title:
                                         <span className='fw-light' > {movie.original_title}</span>
                                     </Card.Subtitle>
                                     <hr />
 
-                                    {/* -------------------------------- */}
                                     {/* Overview */}
                                     <Card.Subtitle className='my-2'>Overview:
                                         <span className=' fw-light' > {movie.overview}</span>
                                     </Card.Subtitle>
                                     <hr className='' />
 
-                                    {/* -------------------------------- */}
                                     {/* popularity */}
                                     <Card.Subtitle className='my-2'>Popularity:
                                         <span className=' fw-light' > {movie.popularity}</span>
                                     </Card.Subtitle>
                                     <hr />
-
-                                    {/* -------------------------------- */}
 
                                     {/* Rating */}
                                     <Card.Subtitle className='my-2'>Ratings:
@@ -88,13 +75,10 @@ const MovieModal = (props) => {
                                     </Card.Subtitle>
                                     <hr />
 
-                                    {/* -------------------------------- */}
                                     {/* vote_count */}
                                     <Card.Subtitle className='my-2'>Vote Count:
                                         <span className=' fw-light' > {movie.vote_count}</span>
                                     </Card.Subtitle>
-
-
                                 </div>
 
                             </Card.Body>
@@ -107,7 +91,6 @@ const MovieModal = (props) => {
                     <Button variant="danger" className='m-3 modalCloseBtn m-auto' onClick={handleClose}>
                         Close
                     </Button>
-
                 </Modal.Footer>
             </Modal>
         </div>
