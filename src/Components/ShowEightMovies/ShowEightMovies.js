@@ -7,7 +7,7 @@ import SingleMovie from '../SingleMovie/SingleMovie';
 const ShowEightMovies = (props) => {
 
     const {genres, divBg, sectionTitle, movies} = props;
-    let history = useHistory();
+    const history = useHistory();
 
     const handleViewAllClick = (category) => {
         history.push(`/${category}/view-all`);
@@ -15,7 +15,6 @@ const ShowEightMovies = (props) => {
 
     return (
         <div className={`${divBg} w-100 py-3`}>
-
             <div className="container">
 
                 {/* Section Title */}
@@ -40,9 +39,7 @@ const ShowEightMovies = (props) => {
                         View All {sectionTitle}
                     </Button>
                 </div>
-
             </div>
-
         </div >
     );
 };

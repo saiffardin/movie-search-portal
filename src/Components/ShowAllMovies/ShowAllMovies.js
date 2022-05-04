@@ -11,10 +11,8 @@ const ShowAllMovies = (props) => {
 
     const [movies, setMovies] = useState([]);
     const [pageCount, setPageCount] = useState(0);
-
     const [filter, setFilter] = useState('Select Filter');
     const [query, setQuery] = useState("");
-
 
     useEffect(() => {
         fetch(url)
@@ -25,10 +23,9 @@ const ShowAllMovies = (props) => {
             })
     }, [])
 
-
     const handlePageClick = async (data) => {
 
-        let currentPage = data.selected + 1;
+        const currentPage = data.selected + 1;
 
         const res = await fetch(`${url}&page=${currentPage}`);
         const response = await res.json();
@@ -46,7 +43,6 @@ const ShowAllMovies = (props) => {
 
     return (
         <div className={`${divBg} w-100 py-3`}>
-
             <div className='container'>
 
                 {/* Section Title */}
@@ -66,7 +62,6 @@ const ShowAllMovies = (props) => {
                         <Dropdown.Item eventKey="Genre">Genre</Dropdown.Item>
                     </DropdownButton>
 
-
                     {/* Search */}
                     <input
                         readOnly={filter === 'Select Filter' ? true : false}
@@ -85,7 +80,7 @@ const ShowAllMovies = (props) => {
                             return item.release_date.slice(0, 4).includes(query)
 
                         else if (filter === 'Genre') {
-                            let genreNames = getAllGenreNameByIdArray(genres, item.genre_ids);
+                            const genreNames = getAllGenreNameByIdArray(genres, item.genre_ids);
 
                             return genreNames.map(item => item.includes(query)).includes(true)
                         }
@@ -104,7 +99,6 @@ const ShowAllMovies = (props) => {
                 {/* pagination */}
                 <div className='mt-4 pg' >
                     <ReactPaginate
-
                         previousLabel={'previous'}
                         nextLabel={'next'}
                         breakLabel={'...'}
@@ -112,25 +106,19 @@ const ShowAllMovies = (props) => {
                         marginPagesDisplayed={3}
                         pageRangeDisplayed={5}
                         onPageChange={handlePageClick}
-
                         containerClassName={"pagination justify-content-center"}
                         pageClassName={"page-item"}
                         pageLinkClassName={"page-link"}
-
                         previousClassName={"page-item"}
                         previousLinkClassName={"page-link"}
-
                         nextClassName={"page-item"}
                         nextLinkClassName={"page-link"}
-
                         breakClassName={"page-item"}
                         breakLinkClassName={"page-link"}
                         activeClassName={"active"}
                     />
                 </div >
-
             </div>
-
         </div >
     );
 };
