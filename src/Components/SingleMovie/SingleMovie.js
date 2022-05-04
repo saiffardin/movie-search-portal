@@ -32,9 +32,9 @@ const SingleMovie = (props) => {
                         <Card.Subtitle className=''>Genre:
                             <span className=' fw-light' >
                                 {
-                                    movie.genre_ids.map((id, indx) => {
+                                    movie.genre_ids.map((id) => {
                                         return (
-                                            <span key={indx}>
+                                            <span key={movie.id+id}>
                                                 {' '}
                                                 <Badge pill bg="secondary" className='my-1' > {getGenreNameById(genres, id)}</Badge>
                                                 {' '}

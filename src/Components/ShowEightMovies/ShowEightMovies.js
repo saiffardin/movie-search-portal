@@ -22,8 +22,8 @@ const ShowEightMovies = (props) => {
 
                 {/* Cards - Movies */}
                 <Row>
-                    {movies.map((movie, index) => (
-                        <Col className="d-flex justify-content-center" key={index}>
+                    {movies.map((movie) => (
+                        <Col className="d-flex justify-content-center" key={movie.id}>
                             <SingleMovie
                                 movie={movie}
                                 genres={genres}

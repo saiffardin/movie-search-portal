@@ -17,7 +17,7 @@ const MovieModal = (props) => {
                             <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className='modalImg ' style={{'width': '400px'}} />
                             <Card.Body className='m-2'>
                                 <Card.Title >{movie.title}</Card.Title>
-                                <hr/>
+                                <hr />
 
                                 <div>
 
@@ -31,9 +31,9 @@ const MovieModal = (props) => {
                                     <Card.Subtitle className=''>Genre:
                                         <span className=' fw-light' >
                                             {
-                                                movie.genre_ids.map((id, indx) => {
+                                                movie.genre_ids.map((id) => {
                                                     return (
-                                                        <span key={indx}>
+                                                        <span key={movie.id+id}>
                                                             {' '}
                                                             <Badge pill bg="secondary" > {getGenreNameById(genres, id)}</Badge>
                                                             {' '}

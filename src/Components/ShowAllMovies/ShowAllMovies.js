@@ -85,8 +85,8 @@ const ShowAllMovies = (props) => {
                             return genreNames.map(item => item.includes(query)).includes(true)
                         }
                         else return true
-                    }).map((movie, index) => (
-                        <Col className="d-flex justify-content-center" key={index}>
+                    }).map((movie) => (
+                        <Col className="d-flex justify-content-center" key={movie.id}>
                             <SingleMovie
                                 movie={movie}
                                 genres={genres}
