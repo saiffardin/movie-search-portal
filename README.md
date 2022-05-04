@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# kona-frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Click here to visit the live site.](https://movie-search-portal.netlify.app/)
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## `Key Features:`
 
-### `npm start`
+1. A responsive landing page that has 3 categories of movies, such:
+    - trending movies
+    - top rated movies
+    - upcoming movies
+2. In landing page each category of movies is a collection of eight movies with a *view all* button at the end.
+3. Clicking on the *view all* button, will redirect the user to a new page. 
+4. The contents of this page depends on the category the user has clicked upon.
+5. User can view all the movies through pagination.
+6. Each movie has a *Show Movie Details* button.
+7. By clicking this button user can see movie's detail information.
+6. User can also search for movies within the current page.
+7. User can search through movies based on these 3 filters:
+    - *movie name*
+    - *release year*
+    - *genre*
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## `Front-End Technologies:`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- React
+- React Router
+- React Paginate
+- Bootstrap 5
+- Netlify
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## `Project Architecture:`
 
-### `npm run build`
+This part of the doc resembles the whole coding flow of this repository. This project mostly has 5 *components* such:
+1. LandingPage
+2. ShowEightMovies
+3. SingleMovie
+4. MovieModal
+5. ShowAllMovies 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### `App.js`: 
+This mostly controls the routers. All the routers we've used in our website is included here.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+#### `LandingPage.js`: 
+It renders *ShowEightMovies* component three times with different props. It also calls the api to fetch the movies of each categories.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### `ShowEightMovies.js`: 
+This component renders *SingleMovie* component based on the *props* it got from *LandingPage* component. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### `SingleMovie.js`: 
+This can be treated as the soul component of this project. It renders react-bootstrap's *Card* component. Each card contains movie's poster, title, release date, genre and ratings. And this also renders the *MovieModal* component.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### `MovieModal.js`: 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+It renders react-bootstrap's *Modal* component to show movie details. The modal only appears when the user clicks on *Show Movie Details* button.
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### `ShowAllMovies.js`: 
+This component renders the search bar, search filter, movies and pagination. It makes api call on every time the user paginates to a different page. 
