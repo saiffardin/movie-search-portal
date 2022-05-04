@@ -42,31 +42,36 @@ This part of the doc resembles the whole coding flow of this repository. This pr
 
 ---
 
-#### `App.js`: 
-This mostly controls the routers. All the routers we've used in our website is included here.
+### `App.js`: 
+This mostly controls the routers. All the routers I've used in our website is included here.
 
 ---
 
-#### `LandingPage.js`: 
+### `LandingPage.js`: 
 It renders *ShowEightMovies* component three times with different props. It also calls the api to fetch the movies of each categories.
 
 ---
 
-#### `ShowEightMovies.js`: 
+### `ShowEightMovies.js`: 
 This component renders *SingleMovie* component based on the *props* it got from *LandingPage* component. 
 
 ---
 
-#### `SingleMovie.js`: 
+### `SingleMovie.js`: 
 This can be treated as the soul component of this project. It renders react-bootstrap's *Card* component. Each card contains movie's poster, title, release date, genre and ratings. And this also renders the *MovieModal* component.
 
 ---
 
-#### `MovieModal.js`: 
+### `MovieModal.js`: 
 
 It renders react-bootstrap's *Modal* component to show movie details. The modal only appears when the user clicks on *Show Movie Details* button.
 
 ---
 
-#### `ShowAllMovies.js`: 
+### `ShowAllMovies.js`: 
 This component renders the search bar, search filter, movies and pagination. It makes api call on every time the user paginates to a different page. 
+
+---
+
+### `genre.js`: 
+This is isn't a component. This file contains some of the helper functions that I've developed while building this project. This file is located under *utility* folder.
