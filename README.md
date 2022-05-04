@@ -75,3 +75,18 @@ This component renders the search bar, search filter, movies and pagination. It 
 
 ### `genre.js`: 
 This is isn't a component. This file contains some of the helper functions that I've developed while building this project. This file is located under *utility* folder.
+
+---
+
+
+## `Screenshots:`
+
+- Landing Page : Desktop
+    
+    ![Landing Page](./screenshots/1.png)
+
+---
+
+- All Top Rated Movies : Desktop
+    
+    ![All Top Rated Movies](./screenshots/2.png)
