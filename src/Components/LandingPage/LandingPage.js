@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from 'react';
-import ShowTenMovies from '../ShowTenMovies/ShowTenMovies';
+import ShowEightMovies from '../ShowEightMovies/ShowEightMovies';
 
 const LandingPage = (props) => {
 
@@ -30,7 +30,7 @@ const LandingPage = (props) => {
         <div>
 
             {/* Trending Movies */}
-            <ShowTenMovies
+            <ShowEightMovies
                 genres={genres}
                 divBg="trending"
                 sectionTitle="Trending Movies"
@@ -38,7 +38,7 @@ const LandingPage = (props) => {
             />
 
             {/* Top Rated Movies */}
-            <ShowTenMovies
+            <ShowEightMovies
                 genres={genres}
                 divBg="top-rated"
                 sectionTitle="Top Rated Movies"
@@ -46,13 +46,13 @@ const LandingPage = (props) => {
             />
 
             {/* Upcoming Movies */}
-            <ShowTenMovies
+            <ShowEightMovies
                 genres={genres}
                 divBg="upcoming"
                 sectionTitle="Upcoming Movies"
                 movies={upcomingMovies}
             />
-            
+
         </div>
     );
 };

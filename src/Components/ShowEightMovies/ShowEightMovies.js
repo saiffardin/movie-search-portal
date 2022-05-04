@@ -4,7 +4,7 @@ import {Button, Col, Row} from 'react-bootstrap';
 import {useHistory} from "react-router-dom";
 import SingleMovie from '../SingleMovie/SingleMovie';
 
-const ShowTenMovies = (props) => {
+const ShowEightMovies = (props) => {
 
     const {genres, divBg, sectionTitle, movies} = props;
     let history = useHistory();
@@ -47,4 +47,4 @@ const ShowTenMovies = (props) => {
     );
 };
 
-export default ShowTenMovies;
+export default ShowEightMovies;
