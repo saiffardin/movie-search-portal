@@ -14,7 +14,7 @@ const ShowAllMovies = (props) => {
 
     const [filter, setFilter] = useState('Select Filter');
     const [query, setQuery] = useState("");
-   
+
 
     useEffect(() => {
         fetch(url)
@@ -95,7 +95,7 @@ const ShowAllMovies = (props) => {
                             <SingleMovie
                                 movie={movie}
                                 genres={genres}
-                                showDetails={true}
+                                showDetailsBtn={true}
                             />
                         </Col >
                     ))}

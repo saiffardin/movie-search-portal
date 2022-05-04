@@ -4,7 +4,7 @@ import {getGenreNameById} from '../../utility/genre';
 import MovieModal from '../MovieModal/MovieModal';
 
 const SingleMovie = (props) => {
-    const {movie, genres, showDetails} = props;
+    const {movie, genres, showDetailsBtn} = props;
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -24,7 +24,6 @@ const SingleMovie = (props) => {
                     <hr />
 
                     <div>
-
                         {/* Release Date */}
                         <Card.Subtitle className='my-2'>Release Date: <span className=' fw-light' >{movie.release_date}</span></Card.Subtitle>
                         <hr />
@@ -55,7 +54,7 @@ const SingleMovie = (props) => {
 
                 {/* details button */}
                 {
-                    showDetails &&
+                    showDetailsBtn &&
                     <div className="d-grid gap-2 p-1">
                         <Button variant="outline-success" onClick={() => handleMovieDetailsClick(movie)}>
                             Show Movie Details
@@ -71,7 +70,7 @@ const SingleMovie = (props) => {
                 movie={movie}
                 genres={genres}
             />
-            
+
         </div>
     );
 };
