@@ -1,6 +1,6 @@
 # kona-frontend
 
-[Click here to visit the live site.](https://movie-search-portal.netlify.app/)
+Live Site Link: [https://movie-search-portal.netlify.app/](https://movie-search-portal.netlify.app/)
 
 ---
 
@@ -11,11 +11,13 @@
     - top rated movies
     - upcoming movies
 2. In landing page each category of movies is a collection of eight movies with a *view all* button at the end.
-3. Clicking on the *view all* button, will redirect the user to a new page. 
-4. The contents of this page depends on the category the user has clicked upon.
+3. Clicking on the *view all* button -
+    - will redirect the user to a new page. 
+    - contents of this page depends on the category the user has clicked upon.
 5. User can view all the movies through pagination.
-6. Each movie has a *Show Movie Details* button.
-7. By clicking this button user can see movie's detail information.
+6. In that page each movie has -
+    - a *Show Movie Details* button. 
+    - by clicking this button user can see movie's detail information.
 6. User can also search for movies within the current page.
 7. User can search through movies based on these 3 filters:
     - *movie name*
@@ -25,24 +27,23 @@
 ## `Front-End Technologies:`
 
 - React
-- React Router
-- React Paginate
 - Bootstrap 5
 - Netlify
 
+[click on this link](#my-multi-word-header)
 
 ## `Project Architecture:`
 
 This part of the doc resembles the whole coding flow of this repository. This project mostly has 5 *components* such:
-1. LandingPage
-2. ShowEightMovies
-3. SingleMovie
-4. MovieModal
-5. ShowAllMovies 
+1. [LandingPage](#landingpagejs)
+2. [ShowEightMovies](#showeightmoviesjs)
+3. [SingleMovie](#singlemoviejs)
+4. [MovieModal](#moviemodaljs)
+5. [ShowAllMovies](#showallmoviesjs)
 
 ---
 
-### `App.js`: 
+### [App.js](./src/App.js) : 
 This mostly controls the routers. All the routers I've used in our website is included here.
 
 ---
