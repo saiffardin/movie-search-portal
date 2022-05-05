@@ -49,12 +49,12 @@ This component's responsibility is to show 3 categorized movie's list on landing
 - to fetch the *top rated* movies, it calls the [top rated movies api](#topRatedMovies), and
 - to fetch the *upcoming* movies, it calls the [upcoming movies api](#upcomingMovies)
 
-All of the three categories consist 8 movies each. The component does that by reusing  [ShowEightMovies](#showEightMovies) component.
+All of the three categories consist 8 movies each. This is done by reusing [ShowEightMovies](#showEightMovies) component.
 
 ---
 
 ### [ShowEightMovies.js](./src/Components/ShowEightMovies/ShowEightMovies.js) <span id="showEightMovies"></span> : 
-This is a reusable component. It renders eight movies along with a *view all* button at the bottom. To render 8 movies it reuses [SingleMovie](#singleMovie) component. 
+This is a reusable component. It renders eight movies of a single category along with a *view all* button at the bottom. To render 8 movies it reuses [SingleMovie](#singleMovie) component. 
 
 ---
 
