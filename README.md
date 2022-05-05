@@ -80,14 +80,52 @@ This is isn't a component. This file contains some of the helper functions that 
 ---
 
 
+screenshots\
+
+screenshots\3.landing_page_mobile.png
+screenshots\4.png
+screenshots\5_movie_details_desktop.png
+screenshots\6_movie_details_tablet.png
+screenshots\7_movie_details_phone.png
+
 ## `Screenshots:`
 
 - Landing Page : Desktop
     
-    ![Landing Page](./screenshots/1.png)
+    ![Landing Page : Desktop](./screenshots/1.landing_page_desktop.png)
 
 ---
 
-- All Top Rated Movies : Desktop
+- Landing Page : Tablet
     
-    ![All Top Rated Movies](./screenshots/2.png)
+    ![Landing Page : Tablet](./screenshots/2.landing_page%20_tablet.png)
+
+---
+
+- Landing Page : Mobile
+    
+    ![Landing Page : Mobile](./screenshots/3.landing_page_mobile.png)
+
+---
+
+- All Top Rated : Desktop
+    
+    ![All Top Rated : Desktop](./screenshots/4.png)
+
+---
+
+- Movie Details : Desktop
+    
+    ![All Top Rated : Desktop](./screenshots/5_movie_details_desktop.png)
+
+---
+
+- Movie Details : Tablet
+    
+    ![All Top Rated : Tablet](./screenshots/6_movie_details_tablet.png)
+
+---
+
+- Movie Details : Mobile
+    
+    ![All Top Rated : Mobile](./screenshots/7_movie_details_phone.png)
