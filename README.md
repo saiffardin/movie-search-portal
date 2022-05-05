@@ -34,42 +34,42 @@ Live Site Link: [https://movie-search-portal.netlify.app/](https://movie-search-
 ## `Project Architecture:`
 
 This part of the doc resembles the whole coding flow of this repository. This project has 5 *components*, such:
-1. [LandingPage](#landingpagejs)
-2. [ShowEightMovies](#showeightmoviesjs)
-3. [SingleMovie](#singlemoviejs)
-4. [MovieModal](#moviemodaljs)
-5. [ShowAllMovies](#showallmoviesjs)
+1. [LandingPage](#showAllMovies)
+2. [ShowEightMovies](#showEightMovies)
+3. [SingleMovie](#singleMovie)
+4. [MovieModal](#movieModal)
+5. [ShowAllMovies](#showAllMovies)
 
 ---
 
-### [LandingPage.js](./src/Components/LandingPage/LandingPage.js) <span id="landingpagejs"></span> : 
+### [LandingPage.js](./src/Components/LandingPage/LandingPage.js) <span id="showAllMovies"></span> : 
 
 This component's responsibility is to show 3 categorized movie's list on landing page. It calls one api for each of the category. Here -
 - to fetch the *trending* movies, it calls the [trending movies api](#trendingMovies),
 - to fetch the *top rated* movies, it calls the [top rated movies api](#topRatedMovies), and
 - to fetch the *upcoming* movies, it calls the [upcoming movies api](#upcomingMovies)
 
-All of the three categories consist 8 movies each. The component does that by reusing  [ShowEightMovies](#showeightmoviesjs) component.
+All of the three categories consist 8 movies each. The component does that by reusing  [ShowEightMovies](#showEightMovies) component.
 
 ---
 
-### [ShowEightMovies.js](./src/Components/ShowEightMovies/ShowEightMovies.js) <span id="showeightmoviesjs"></span> : 
-This is a reusable component. It renders eight movies along with a *view all* button at the bottom. To render 8 movies it reuses [SingleMovie](#singlemoviejs) component. 
+### [ShowEightMovies.js](./src/Components/ShowEightMovies/ShowEightMovies.js) <span id="showEightMovies"></span> : 
+This is a reusable component. It renders eight movies along with a *view all* button at the bottom. To render 8 movies it reuses [SingleMovie](#singleMovie) component. 
 
 ---
 
-### [SingleMovie.js](./src/Components/SingleMovie/SingleMovie.js) <span id="singlemoviejs"></span> : 
-This component is being reused in [ShowEightMovies](#showeightmoviesjs) component, and [ShowAllMovies](#showallmoviesjs) component. This component's core responsibility is to design the view of every single movie card.
-It does that with the help of *Card* component provided by react-bootstrap. Each card contains movie's poster, title, release date, genre and ratings. SingleMovie component reuses [MovieModal](#moviemodaljs) component to deal with pop-ups. 
+### [SingleMovie.js](./src/Components/SingleMovie/SingleMovie.js) <span id="singleMovie"></span> : 
+This component is being reused in [ShowEightMovies](#showEightMovies) component, and [ShowAllMovies](#showAllMovies) component. This component's core responsibility is to design the view of every single movie card.
+It does that with the help of *Card* component provided by react-bootstrap. Each card contains movie's poster, title, release date, genre and ratings. SingleMovie component reuses [MovieModal](#movieModal) component to deal with pop-ups. 
 
 ---
 
-### [MovieModal.js](./src/Components/MovieModal/MovieModal.js) <span id="moviemodaljs"></span> : 
+### [MovieModal.js](./src/Components/MovieModal/MovieModal.js) <span id="movieModal"></span> : 
 It renders react-bootstrap's *Modal* component to show movie details. The movie detail contains movie's title, release date, original language, original title, overview, popularity, ratings and view count. This modal only appears when the user clicks on *Show Movie Details* button.
 
 ---
 
-### [ShowAllMovies.js](./src/Components/ShowAllMovies/ShowAllMovies.js) <span id="showallmoviesjs"></span> : 
+### [ShowAllMovies.js](./src/Components/ShowAllMovies/ShowAllMovies.js) <span id="showAllMovies"></span> : 
 This component renders all the movies of a certain category. In this component, search filter and pagination is implemented. Users can view all the movies by pagination. Pagination is done with the help of a library called *react-paginate*.
 
 For every time user paginates to a different page, one of the get movies api ([trending movies api](#trendingMovies) or [top rated movies api](#topRatedMovies) or [upcoming movies api](#upcomingMovies)) is being called with a query param such: `&page={{pageNumber}}`.
