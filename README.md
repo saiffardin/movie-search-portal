@@ -83,7 +83,11 @@ This file contains two helper functions, such :
 1. `getGenreNameById(arr,id)` 
 2. `getAllGenreNameByIdArray(arr,idArray)`
 
-Here `arr` is an array of objects, where each element is an object that has genre id and name. `getGenreNameById` returns corresponding `id`'s genre name only. Whereas `getAllGenreNameByIdArray` returns an array of genre names corresponding to an array of `id`'s.
+`arr` parameter for both of the functions is an array of objects, means each element of that array is an object. In this project `arr` will contain a list of genres. Each object of that array has a genre id and genre name.
+
+The second parameter of `getGenreNameById` is `id`, which represents a single genre id. `getGenreNameById` function searches through list of genres for the given id, and returns genre name.
+
+On the other hand, the second parameter of `getAllGenreNameByIdArray` function is an `idArray`, which represents an array of genre id's. This function searches through the list of genres for every single id given in `idArray`, and returns an array which has all the genre names corresponding to every id in `idArray`.
 
 ---
 
