@@ -14,6 +14,8 @@ const ShowMovies = (props) => {
 
         console.log('category:', category);
         console.log('genreId:', genreId);
+        history.push(`/genre/${genreId}`);
+
     }
 
     // console.log('props:', props)

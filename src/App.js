@@ -6,6 +6,7 @@ import {
 import './App.css';
 import LandingPage from "./Components/LandingPage/LandingPage";
 import ShowAllMovies from "./Components/ShowAllMovies/ShowAllMovies";
+import TopMoviesList from "./Components/TopMoviesList/TopMoviesList";
 
 export const CentralDataContext = createContext();
 
@@ -63,6 +64,7 @@ function App() {
             <Router>
                 <div>
                     <Switch>
+                        {/* landing page */}
                         <Route exact path="/">
                             <LandingPage
                                 genres={genres}
@@ -74,12 +76,20 @@ function App() {
                             />
                         </Route>
 
+                        {/* landing page */}
                         <Route exact path="/movies">
                             <LandingPage
                                 genres={genres}
                                 genreWiseMovies={genreWiseMovies}
                             />
                         </Route>
+
+
+                        {/* landing page */}
+                        <Route exact path="/genre/:slug">
+                            <TopMoviesList />
+                        </Route>
+
 
                         <Route exact path={`/trending/view-all`}>
                             {/* show all - trending */}
