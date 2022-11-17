@@ -85,7 +85,7 @@ function App() {
                         </Route>
 
 
-                        {/* landing page */}
+                        {/* genre page */}
                         <Route exact path="/genre/:slug">
                             <TopMoviesList />
                         </Route>

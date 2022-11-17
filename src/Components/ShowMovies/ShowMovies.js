@@ -9,11 +9,13 @@ const ShowMovies = (props) => {
     const {divBg, sectionTitle, movies, genreId} = props;
     const history = useHistory();
 
-    const handleViewAllClick = (category) => {
+    const handleViewAllClick = (divBg) => {
         // history.push(`/${category}/view-all`);
 
-        console.log('category:', category);
-        console.log('genreId:', genreId);
+        // console.log('divBg:', divBg);
+        // console.log('genreId:', genreId);
+        history.divBg = divBg;
+        // console.log('history:', history);
         history.push(`/genre/${genreId}`);
 
     }
