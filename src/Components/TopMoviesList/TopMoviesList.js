@@ -10,8 +10,10 @@ import SingleMovie from '../SingleMovie/SingleMovie';
 // import {useHistory, useParams} from 'react-router-dom';
 // import {Col, Dropdown, DropdownButton, Row} from 'react-bootstrap';
 
-
-
+const MOVIE_NAME = 'Movie Name';
+const RELEASE_YEAR = 'Release Year';
+const RATINGS = 'Ratings';
+const SORTING_OPTIONS = [MOVIE_NAME, RELEASE_YEAR, RATINGS];
 
 
 const TopMoviesList = () => {
@@ -65,13 +67,30 @@ const TopMoviesList = () => {
     const [filter, setFilter] = useState('Sort By : Default');
 
     const handleSelectFilter = (e) => {
-        console.log('e:', e)
-        setFilter(`Sort By : ${e}`)
+        let sortedMovies = [...singleGenre.movies];
+        setFilter(`Sort By : ${e}`);
+
+        if (e === MOVIE_NAME) {
+            sortedMovies = [...singleGenre.movies].sort((a, b) =>
+                a.title > b.title ? 1 : -1,
+            );
+        }
+
+        else if (e === RELEASE_YEAR) {
+            sortedMovies = [...singleGenre.movies].sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
+        }
+
+        else if (e === RATINGS) {
+            sortedMovies = [...singleGenre.movies].sort((a, b) => b.vote_average - a.vote_average);
+        }
+
+        setSingleGenre(prevState => ({
+            ...prevState,
+            movies: sortedMovies
+        }))
     }
 
-
     return (
-
         <div className={`bgGenre w-100 py-3`}>
             <div className='container'>
 
@@ -87,12 +106,10 @@ const TopMoviesList = () => {
                         onSelect={handleSelectFilter}
                         size="sm"
                     >
-                        <Dropdown.Item eventKey="Movie Name">Movie Name</Dropdown.Item>
-                        <Dropdown.Item eventKey="Release Year">Release Year</Dropdown.Item>
-                        <Dropdown.Item eventKey="Overview">Overview</Dropdown.Item>
-                        <Dropdown.Item eventKey="Genre">Genre</Dropdown.Item>
+                        {
+                            SORTING_OPTIONS.map((option, indx) => <Dropdown.Item key={indx} eventKey={option}>{option}</Dropdown.Item>)
+                        }
                     </DropdownButton>
-
                 </div>
 
                 <Row>
@@ -106,7 +123,6 @@ const TopMoviesList = () => {
                         </Col >
                     ))}
                 </Row >
-
 
             </div>
         </div >
