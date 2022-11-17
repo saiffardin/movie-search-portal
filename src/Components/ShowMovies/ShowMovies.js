@@ -13,6 +13,8 @@ const ShowMovies = (props) => {
         history.push(`/${category}/view-all`);
     }
 
+    console.log('props:', props)
+
     return (
         <div className={`${divBg} w-100 py-3`}>
             <div className="container">
@@ -36,7 +38,7 @@ const ShowMovies = (props) => {
                 {/* view all button */}
                 <div className=" text-center m-3">
                     <Button variant="danger" size="lg" onClick={() => handleViewAllClick(divBg)}>
-                        View All {sectionTitle}
+                        View More {sectionTitle} Movies
                     </Button>
                 </div>
             </div>

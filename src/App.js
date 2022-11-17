@@ -68,6 +68,13 @@ function App() {
                         />
                     </Route>
 
+                    <Route exact path="/movies">
+                        <LandingPage
+                            genres={genres}
+                            genreWiseMovies={genreWiseMovies}
+                        />
+                    </Route>
+
                     <Route exact path={`/trending/view-all`}>
                         {/* show all - trending */}
                         <ShowAllMovies
