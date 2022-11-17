@@ -44,7 +44,7 @@ function App() {
                             {
                                 genreId: singleGenre.id,
                                 genreName: singleGenre.name,
-                                movies: res.results.slice(0, 5)
+                                movies: res.results.slice(0, 10)
                             }
                         ]
                     }))

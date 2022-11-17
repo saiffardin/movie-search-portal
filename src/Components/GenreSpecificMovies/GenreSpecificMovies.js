@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
-import ShowFiveMovies from '../ShowEightMovies/ShowFiveMovies';
+import ShowMovies from '../ShowMovies/ShowMovies';
 
 const GenreSpecificMovies = (props) => {
 
@@ -8,18 +8,18 @@ const GenreSpecificMovies = (props) => {
 
     const stylesDivBg = ['bgBlue', 'bgGrey', 'bgGreenish'];
 
-    console.log('genreWiseMovies:', genreWiseMovies)
+    // console.log('genreWiseMovies:', genreWiseMovies)
 
     return (
         <div>
             {
                 genreWiseMovies.map((singleGenre, indx) => (
-                    <ShowFiveMovies
+                    <ShowMovies
                         key={indx}
                         genres={genres}
                         divBg={stylesDivBg[indx % stylesDivBg.length]}
                         sectionTitle={singleGenre.genreName}
-                        movies={singleGenre.movies}
+                        movies={singleGenre.movies.slice(0, 5)}
                     />
                 ))
             }
