@@ -11,7 +11,7 @@ const GenreSpecificMovies = (props) => {
 
     // console.log('-------------------------------')
     // console.log('genres:', genres)
-    // console.log('genreWiseMovies:', genreWiseMovies)
+    console.log('genreWiseMovies:', genreWiseMovies)
     // console.log('stylesDivBg:', stylesDivBg)
 
     return (
@@ -20,10 +20,10 @@ const GenreSpecificMovies = (props) => {
                 genreWiseMovies.map((singleGenre, indx) => (
                     <ShowMovies
                         key={indx}
-                        genres={genres}
                         divBg={stylesDivBg[indx % stylesDivBg.length]}
                         sectionTitle={singleGenre.genreName}
                         movies={singleGenre.movies.slice(0, 5)}
+                        genreId={singleGenre.genreId}
                     />
                 ))
             }

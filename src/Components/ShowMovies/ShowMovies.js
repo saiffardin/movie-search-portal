@@ -6,11 +6,14 @@ import SingleMovie from '../SingleMovie/SingleMovie';
 
 const ShowMovies = (props) => {
 
-    const {genres, divBg, sectionTitle, movies} = props;
+    const {divBg, sectionTitle, movies, genreId} = props;
     const history = useHistory();
 
     const handleViewAllClick = (category) => {
-        history.push(`/${category}/view-all`);
+        // history.push(`/${category}/view-all`);
+
+        console.log('category:', category);
+        console.log('genreId:', genreId);
     }
 
     // console.log('props:', props)
@@ -28,7 +31,7 @@ const ShowMovies = (props) => {
                         <Col className="d-flex justify-content-center" key={movie.id}>
                             <SingleMovie
                                 movie={movie}
-                                genres={genres}
+                                // genres={genres}
                                 showDetailsBtn={false}
                             />
                         </Col>

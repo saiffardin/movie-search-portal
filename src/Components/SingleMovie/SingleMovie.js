@@ -1,10 +1,13 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Badge, Button, Card} from 'react-bootstrap';
+import {CentralDataContext} from '../../App';
 import {getGenreNameById} from '../../utility/genre';
 import MovieModal from '../MovieModal/MovieModal';
 
 const SingleMovie = (props) => {
-    const {movie, genres, showDetailsBtn} = props;
+    const {movie, showDetailsBtn} = props;
+    const {genres, genreWiseMovies, stylesDivBg} = useContext(CentralDataContext);
+
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -34,7 +37,7 @@ const SingleMovie = (props) => {
                                 {
                                     movie.genre_ids.map((id) => {
                                         return (
-                                            <span key={movie.id+id}>
+                                            <span key={movie.id + id}>
                                                 {' '}
                                                 <Badge pill bg="secondary" className='my-1' > {getGenreNameById(genres, id)}</Badge>
                                                 {' '}
