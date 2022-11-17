@@ -1,57 +1,82 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {useHistory, useParams} from 'react-router-dom';
-import {CentralDataContext} from '../../App';
+import {useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
+
+import React from 'react';
 
 import {Col, Dropdown, DropdownButton, Row} from 'react-bootstrap';
 import SingleMovie from '../SingleMovie/SingleMovie';
 
 
+// import {useHistory, useParams} from 'react-router-dom';
+// import {Col, Dropdown, DropdownButton, Row} from 'react-bootstrap';
+
+
+
+
 
 const TopMoviesList = () => {
+    const [allGenres, setAllGenres] = useState([]);
+
     const [singleGenre, setSingleGenre] = useState({});
-    const {divBg} = useHistory();
     const {slug} = useParams();
 
-    const {genres, genreWiseMovies, stylesDivBg} = useContext(CentralDataContext);
+    const apiKey = process.env.REACT_APP_API;
 
-
-    console.log('divBg:', divBg);
-    console.log('slug:', slug);
-
+    const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
 
     useEffect(() => {
-        const result = genreWiseMovies.filter(genre => genre.genreId.toString() === slug);
-        console.log('result:', result)
-        setSingleGenre(result[0]);
-        window.scrollTo(0, 0);
+        fetch(genreUrl)
+            .then((data) => data.json())
+            .then((res) => {
 
+                setAllGenres(res.genres);
+
+                const thisGenre = res.genres.find(genre => genre.id.toString() === slug);
+
+                setSingleGenre({
+                    genreId: thisGenre.id,
+                    genreName: thisGenre.name,
+                    movies: []
+                });
+
+            })
     }, [])
 
+
     useEffect(() => {
 
+        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${slug}`)
+            .then((data) => data.json())
+            .then((res) => {
+                setSingleGenre(prevState => ({
+                    ...prevState,
+                    movies: res.results.slice(0, 10)
+                }));
+            })
+    }, [slug])
+
+    useEffect(() => {
         console.log('%c singleGenre:', 'color:red', singleGenre)
         console.log('-----------------------')
 
     }, [singleGenre])
 
 
-    const [filter, setFilter] = useState('Select Filter');
+    const [filter, setFilter] = useState('Sort By : Default');
 
     const handleSelectFilter = (e) => {
         console.log('e:', e)
-        // setFilter(e)
+        setFilter(`Sort By : ${e}`)
     }
 
 
     return (
-        // <div>
-        //     <h1>Top 10 Movies - {slug}</h1>
-        // </div>
-        <div className={`${divBg} w-100 py-3`}>
+
+        <div className={`bgGenre w-100 py-3`}>
             <div className='container'>
 
                 {/* Section Title */}
-                <h1 className={`text-center ${divBg !== 'bgGrey' && 'text-white'}`}>All {singleGenre?.genreName}</h1>
+                <h1 className={`text-center `}>Top {singleGenre?.genreName} Movies</h1>
 
                 <div className='d-flex justify-content-center'>
                     {/* Dropdown Filter */}
@@ -68,13 +93,6 @@ const TopMoviesList = () => {
                         <Dropdown.Item eventKey="Genre">Genre</Dropdown.Item>
                     </DropdownButton>
 
-                    {/* Search */}
-                    {/* <input
-                        readOnly={filter === 'Select Filter' ? true : false}
-                        className="search m-2"
-                        placeholder="Search..."
-                        onChange={handleInputChange}
-                    /> */}
                 </div>
 
                 <Row>
@@ -82,7 +100,7 @@ const TopMoviesList = () => {
                         <Col className="d-flex justify-content-center" key={movie.id}>
                             <SingleMovie
                                 movie={movie}
-                                genres={genres}
+                                genres={allGenres}
                                 showDetailsBtn={true}
                             />
                         </Col >
