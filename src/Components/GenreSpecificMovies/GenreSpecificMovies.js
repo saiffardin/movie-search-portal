@@ -1,14 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react';
+import React, {useContext} from 'react';
+import {CentralDataContext} from '../../App';
 import ShowMovies from '../ShowMovies/ShowMovies';
 
 const GenreSpecificMovies = (props) => {
 
-    const {genres, genreWiseMovies} = props;
+    // const {genres, genreWiseMovies} = props;
+    const {genres, genreWiseMovies, stylesDivBg} = useContext(CentralDataContext);
 
-    const stylesDivBg = ['bgBlue', 'bgGrey', 'bgGreenish'];
 
+    // console.log('-------------------------------')
+    // console.log('genres:', genres)
     // console.log('genreWiseMovies:', genreWiseMovies)
+    // console.log('stylesDivBg:', stylesDivBg)
 
     return (
         <div>

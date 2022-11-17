@@ -13,7 +13,7 @@ const ShowMovies = (props) => {
         history.push(`/${category}/view-all`);
     }
 
-    console.log('props:', props)
+    // console.log('props:', props)
 
     return (
         <div className={`${divBg} w-100 py-3`}>

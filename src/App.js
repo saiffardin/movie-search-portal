@@ -1,11 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import {useEffect, useState} from "react";
+import {createContext, useEffect, useState} from "react";
 import {
     BrowserRouter as Router, Route, Switch
 } from "react-router-dom";
 import './App.css';
 import LandingPage from "./Components/LandingPage/LandingPage";
 import ShowAllMovies from "./Components/ShowAllMovies/ShowAllMovies";
+
+export const CentralDataContext = createContext();
+
 
 function App() {
 
@@ -21,6 +24,8 @@ function App() {
 
     const [genres, setGenres] = useState([]);
     const [genreWiseMovies, setGenreWiseMovies] = useState([]);
+    const stylesDivBg = ['bgBlue', 'bgGrey', 'bgGreenish'];
+
 
 
     useEffect(() => {
@@ -54,63 +59,65 @@ function App() {
     }, [genres])
 
     return (
-        <Router>
-            <div>
-                <Switch>
-                    <Route exact path="/">
-                        <LandingPage
-                            genres={genres}
-                            genreWiseMovies={genreWiseMovies}
+        <CentralDataContext.Provider value={{genres, genreWiseMovies, stylesDivBg}}>
+            <Router>
+                <div>
+                    <Switch>
+                        <Route exact path="/">
+                            <LandingPage
+                                genres={genres}
+                                genreWiseMovies={genreWiseMovies}
 
-                            trendingMoviesUrl={trendingMoviesUrl}
-                            topRatedMoviesUrl={topRatedMoviesUrl}
-                            upcomingMoviesUrl={upcomingMoviesUrl}
-                        />
-                    </Route>
+                                trendingMoviesUrl={trendingMoviesUrl}
+                                topRatedMoviesUrl={topRatedMoviesUrl}
+                                upcomingMoviesUrl={upcomingMoviesUrl}
+                            />
+                        </Route>
 
-                    <Route exact path="/movies">
-                        <LandingPage
-                            genres={genres}
-                            genreWiseMovies={genreWiseMovies}
-                        />
-                    </Route>
+                        <Route exact path="/movies">
+                            <LandingPage
+                                genres={genres}
+                                genreWiseMovies={genreWiseMovies}
+                            />
+                        </Route>
 
-                    <Route exact path={`/trending/view-all`}>
-                        {/* show all - trending */}
-                        <ShowAllMovies
-                            genres={genres}
-                            divBg="trending"
-                            sectionTitle="Trending Movies"
-                            url={trendingMoviesUrl}
-                        />
-                    </Route>
+                        <Route exact path={`/trending/view-all`}>
+                            {/* show all - trending */}
+                            <ShowAllMovies
+                                genres={genres}
+                                divBg="trending"
+                                sectionTitle="Trending Movies"
+                                url={trendingMoviesUrl}
+                            />
+                        </Route>
 
-                    <Route exact path={`/top-rated/view-all`}>
-                        {/* show all - top-rated */}
-                        <ShowAllMovies
-                            genres={genres}
-                            divBg="top-rated"
-                            sectionTitle="Top Rated Movies"
-                            url={topRatedMoviesUrl}
-                        />
-                    </Route>
+                        <Route exact path={`/top-rated/view-all`}>
+                            {/* show all - top-rated */}
+                            <ShowAllMovies
+                                genres={genres}
+                                divBg="top-rated"
+                                sectionTitle="Top Rated Movies"
+                                url={topRatedMoviesUrl}
+                            />
+                        </Route>
 
-                    <Route exact path={`/upcoming/view-all`}>
-                        {/* show all - upcoming */}
-                        <ShowAllMovies
-                            genres={genres}
-                            divBg="upcoming"
-                            sectionTitle="Upcoming Movies"
-                            url={upcomingMoviesUrl}
-                        />
-                    </Route>
+                        <Route exact path={`/upcoming/view-all`}>
+                            {/* show all - upcoming */}
+                            <ShowAllMovies
+                                genres={genres}
+                                divBg="upcoming"
+                                sectionTitle="Upcoming Movies"
+                                url={upcomingMoviesUrl}
+                            />
+                        </Route>
 
-                    <Route exact path="*">
-                        <h1>404 - Not Found !!</h1>
-                    </Route>
-                </Switch>
-            </div>
-        </Router>
+                        <Route exact path="*">
+                            <h1>404 - Not Found !!</h1>
+                        </Route>
+                    </Switch>
+                </div>
+            </Router>
+        </CentralDataContext.Provider>
     );
 }
 
