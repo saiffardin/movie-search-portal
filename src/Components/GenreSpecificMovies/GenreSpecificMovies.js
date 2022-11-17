@@ -7,32 +7,47 @@ const GenreSpecificMovies = (props) => {
     const {genres} = props;
 
     const apiKey = process.env.REACT_APP_API;
+    const stylesDivBg = ['bgBlue', 'bgGrey', 'bgGreenish'];
 
-    const testUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=28`;
-
-    const [oneGenreMovies, setOneGenreMovies] = useState([]);
+    const [genreWiseMovies, setGenreWiseMovies] = useState([]);
 
 
     useEffect(() => {
 
-        fetch(testUrl)
-            .then((data) => data.json())
-            .then((res) => {
-                console.log('res saif:', res.results)
-            })
+        genres.map((singleGenre) => {
+            const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${singleGenre.id}`;
 
-        fetch(testUrl)
-            .then((data) => data.json())
-            .then((res) => setOneGenreMovies(res.results.slice(0, 5)))
-    }, [])
+            fetch(url)
+                .then((data) => data.json())
+                .then((res) => {
+                    setGenreWiseMovies((prevState => {
+                        return [
+                            ...prevState,
+                            {
+                                genreId: singleGenre.id,
+                                genreName: singleGenre.name,
+                                movies: res.results.slice(0, 5)
+                            }
+                        ]
+                    }))
+                })
+        })
 
+    }, [genres])
 
     return (
         <div>
-            <ShowFiveMovies genres={genres}
-                divBg="trending"
-                sectionTitle="One Genre only - test"
-                movies={oneGenreMovies} />
+            {
+                genreWiseMovies.map((singleGenre, indx) => (
+                    <ShowFiveMovies
+                        key={indx}
+                        genres={genres}
+                        divBg={stylesDivBg[indx % stylesDivBg.length]}
+                        sectionTitle={singleGenre.genreName}
+                        movies={singleGenre.movies}
+                    />
+                ))
+            }
         </div>
     );
 };

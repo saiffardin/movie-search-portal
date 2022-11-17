@@ -30,33 +30,6 @@ const LandingPage = (props) => {
 
     // --------------------------------------------
 
-    const apiKey = process.env.REACT_APP_API;
-
-    const testUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=28`;
-
-    const [oneGenreMovies, setOneGenreMovies] = useState([]);
-
-
-    useEffect(() => {
-
-        fetch(testUrl)
-            .then((data) => data.json())
-            .then((res) => {
-                console.log('res saif:', res.results)
-            })
-
-        fetch(testUrl)
-            .then((data) => data.json())
-            .then((res) => setOneGenreMovies(res.results.slice(0, 5)))
-    }, [])
-
-    // console.clear();
-
-    console.log('-----------------------')
-
-    console.log('trendingMovies:', trendingMovies)
-    console.log('oneGenreMovies:', oneGenreMovies)
-
 
     return (
         <div>

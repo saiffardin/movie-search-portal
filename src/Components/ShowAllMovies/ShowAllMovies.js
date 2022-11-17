@@ -46,7 +46,7 @@ const ShowAllMovies = (props) => {
             <div className='container'>
 
                 {/* Section Title */}
-                <h1 className={`text-center ${divBg !== 'top-rated' && 'text-white'}`}>All {sectionTitle}</h1>
+                <h1 className={`text-center ${divBg !== 'bgGrey' && 'text-white'}`}>All {sectionTitle}</h1>
 
                 <div className='d-flex justify-content-center'>
                     {/* Dropdown Filter */}

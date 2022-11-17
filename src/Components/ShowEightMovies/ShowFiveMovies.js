@@ -18,7 +18,7 @@ const ShowFiveMovies = (props) => {
             <div className="container">
 
                 {/* Section Title */}
-                <h1 className={`text-center ${divBg !== 'top-rated' && 'text-white'}`}>{sectionTitle}</h1>
+                <h1 className={`text-center ${divBg !== 'bgGrey' && 'text-white'}`}>{sectionTitle}</h1>
 
                 {/* Cards - Movies */}
                 <Row>
