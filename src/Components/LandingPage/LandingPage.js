@@ -6,7 +6,7 @@ import GenreSpecificMovies from '../GenreSpecificMovies/GenreSpecificMovies';
 
 const LandingPage = (props) => {
 
-    const {genres, trendingMoviesUrl, topRatedMoviesUrl, upcomingMoviesUrl} = props;
+    const {genres, genreWiseMovies, trendingMoviesUrl, topRatedMoviesUrl, upcomingMoviesUrl} = props;
 
     const [trendingMovies, setTrendingMovies] = useState([]);
     const [topRatedMovies, setTopRatedMovies] = useState([]);
@@ -34,7 +34,7 @@ const LandingPage = (props) => {
     return (
         <div>
 
-            <GenreSpecificMovies genres={genres} />
+            <GenreSpecificMovies genres={genres} genreWiseMovies={genreWiseMovies} />
 
             {/* Trending Movies */}
             {/* <ShowEightMovies

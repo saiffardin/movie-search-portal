@@ -16,16 +16,42 @@ function App() {
     const trendingMoviesUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`;
 
     const topRatedMoviesUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`;
-    
+
     const upcomingMoviesUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`;
 
     const [genres, setGenres] = useState([]);
+    const [genreWiseMovies, setGenreWiseMovies] = useState([]);
+
 
     useEffect(() => {
         fetch(genreUrl)
             .then((data) => data.json())
             .then((res) => setGenres(res.genres))
     }, [])
+
+    useEffect(() => {
+
+        // eslint-disable-next-line array-callback-return
+        genres.map((singleGenre) => {
+            const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${singleGenre.id}`;
+
+            fetch(url)
+                .then((data) => data.json())
+                .then((res) => {
+                    setGenreWiseMovies((prevState => {
+                        return [
+                            ...prevState,
+                            {
+                                genreId: singleGenre.id,
+                                genreName: singleGenre.name,
+                                movies: res.results.slice(0, 5)
+                            }
+                        ]
+                    }))
+                })
+        })
+
+    }, [genres])
 
     return (
         <Router>
@@ -34,6 +60,8 @@ function App() {
                     <Route exact path="/">
                         <LandingPage
                             genres={genres}
+                            genreWiseMovies={genreWiseMovies}
+
                             trendingMoviesUrl={trendingMoviesUrl}
                             topRatedMoviesUrl={topRatedMoviesUrl}
                             upcomingMoviesUrl={upcomingMoviesUrl}
