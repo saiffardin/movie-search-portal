@@ -26,7 +26,11 @@ const MovieDetails = () => {
                 <div className="row movie-details-wrapper">
 
                     <div className="col-md-6 left-side-details d-flex justify-content-center justify-content-md-end ">
-                        <img alt="poster_img" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className='img-fluid' style={{'width': '400px'}} />
+                        {
+                            movie.poster_path ? (<img alt="poster_img" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className='img-fluid' style={{'width': '400px'}} />) : <span>Loading...</span>
+                        }
+
+
                     </div>
 
 
