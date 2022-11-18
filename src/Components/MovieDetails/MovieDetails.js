@@ -44,80 +44,86 @@ const MovieDetails = () => {
     }, [])
 
     return (
-        <div>
-            <h1>Movie Details - {slug}</h1>
 
-            <Card style={{width: '', border: 'none'}} className='d-flex align-items-center'>
+        <div className='m-1 m-md-2 my-lg-5 overflow-hidden'>
+            <Card style={{width: '', border: 'none'}} className=''>
+                <div className="row movie-details-wrapper">
 
-                <div className='d-flex justify-content-center modalCard'>
-                    <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className='modalImg ' style={{'width': '400px'}} />
-                    <Card.Body className='m-2'>
-                        <Card.Title >{movie.title}</Card.Title>
-                        <hr />
+                    <div className="col-md-6 left-side-details d-flex justify-content-center justify-content-md-end ">
+                        <img alt="poster_img" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className='img-fluid' style={{'width': '400px'}} />
+                    </div>
 
-                        <div>
-                            {/* release_date */}
-                            <Card.Subtitle className='my-2'>Release Date:
-                                <span className=' fw-light' > {movie.release_date}</span>
-                            </Card.Subtitle>
+
+                    <div className='col-md-6 col-xl-4 right-side-details'>
+                        <Card.Body className=''>
+                            <Card.Title className='text-center' >{movie.title}</Card.Title>
                             <hr />
 
-                            {/* genres */}
-                            <Card.Subtitle className=''>Genre:
-                                <span className=' fw-light' >
-                                    {
-                                        movie.genres?.map((genre, indx) => {
-                                            return (
-                                                <span key={indx}>
-                                                    {' '}
-                                                    <Badge className='mt-1' pill bg="secondary" > {genre.name}</Badge>
-                                                    {' '}
-                                                </span>
-                                            )
-                                        })
-                                    }
-                                </span>
-                            </Card.Subtitle>
-                            <hr />
+                            <div>
+                                {/* release_date */}
+                                <Card.Subtitle className='my-2'>Release Date:
+                                    <span className=' fw-light' > {movie.release_date}</span>
+                                </Card.Subtitle>
+                                <hr />
 
-                            {/* original_language */}
-                            <Card.Subtitle className='my-2'>Original Language:
-                                <span className=' fw-light' > {movie.original_language}</span>
-                            </Card.Subtitle>
-                            <hr />
+                                {/* genres */}
+                                <Card.Subtitle className=''>Genre:
+                                    <span className=' fw-light' >
+                                        {
+                                            movie.genres?.map((genre, indx) => {
+                                                return (
+                                                    <span key={indx}>
+                                                        {' '}
+                                                        <Badge className='mt-1' pill bg="secondary" > {genre.name}</Badge>
+                                                        {' '}
+                                                    </span>
+                                                )
+                                            })
+                                        }
+                                    </span>
+                                </Card.Subtitle>
+                                <hr />
 
-                            {/* original_title */}
-                            <Card.Subtitle className='my-2'>Original Title:
-                                <span className='fw-light' > {movie.original_title}</span>
-                            </Card.Subtitle>
-                            <hr />
+                                {/* original_language */}
+                                <Card.Subtitle className='my-2'>Original Language:
+                                    <span className=' fw-light' > {movie.original_language}</span>
+                                </Card.Subtitle>
+                                <hr />
 
-                            {/* Overview */}
-                            <Card.Subtitle className='my-2'>Overview:
-                                <span className=' fw-light' > {movie.overview}</span>
-                            </Card.Subtitle>
-                            <hr className='' />
+                                {/* original_title */}
+                                <Card.Subtitle className='my-2'>Original Title:
+                                    <span className='fw-light' > {movie.original_title}</span>
+                                </Card.Subtitle>
+                                <hr />
 
-                            {/* popularity */}
-                            <Card.Subtitle className='my-2'>Popularity:
-                                <span className=' fw-light' > {movie.popularity}</span>
-                            </Card.Subtitle>
-                            <hr />
+                                {/* Overview */}
+                                <Card.Subtitle className='my-2'>Overview:
+                                    <span className=' fw-light' > {movie.overview}</span>
+                                </Card.Subtitle>
+                                <hr className='' />
 
-                            {/* Rating */}
-                            <Card.Subtitle className='my-2'>Ratings:
-                                <span className=' fw-light' > {movie.vote_average}</span>
-                            </Card.Subtitle>
-                            <hr />
+                                {/* popularity */}
+                                <Card.Subtitle className='my-2'>Popularity:
+                                    <span className=' fw-light' > {movie.popularity}</span>
+                                </Card.Subtitle>
+                                <hr />
 
-                            {/* vote_count */}
-                            <Card.Subtitle className='my-2'>Vote Count:
-                                <span className=' fw-light' > {movie.vote_count}</span>
-                            </Card.Subtitle>
-                        </div>
+                                {/* Rating */}
+                                <Card.Subtitle className='my-2'>Ratings:
+                                    <span className=' fw-light' > {movie.vote_average}</span>
+                                </Card.Subtitle>
+                                <hr />
 
-                    </Card.Body>
+                                {/* vote_count */}
+                                <Card.Subtitle className='my-2'>Vote Count:
+                                    <span className=' fw-light' > {movie.vote_count}</span>
+                                </Card.Subtitle>
+                            </div>
+
+                        </Card.Body>
+                    </div>
                 </div>
+
 
             </Card >
         </div>
