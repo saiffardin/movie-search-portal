@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 import LandingPage from "./Components/LandingPage/LandingPage";
+
 import MovieDetails from "./Components/MovieDetails/MovieDetails";
 import TopMoviesList from "./Components/TopMoviesList/TopMoviesList";
 
@@ -65,10 +66,7 @@ function App() {
 
                         {/* landing page */}
                         <Route exact path="/movies">
-                            <LandingPage
-                                genres={genres}
-                                genreWiseMovies={genreWiseMovies}
-                            />
+                            <LandingPage />
                         </Route>
 
 
