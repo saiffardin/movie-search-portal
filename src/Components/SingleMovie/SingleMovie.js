@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Badge, Button, Card} from 'react-bootstrap';
 import {useHistory} from 'react-router-dom';
 import {getGenreNameById} from '../../utility/genre';
+import {addItemToLocalStorage} from '../../utility/localStorage';
 
 const SingleMovie = (props) => {
     const {movie, showDetailsBtn} = props;
@@ -16,8 +17,13 @@ const SingleMovie = (props) => {
     }
 
     const handleAddToWishlist = (movie) => {
-        console.log('movie:', movie)
-        localStorage.setItem('wishlist', JSON.stringify(movie));
+
+        console.log('wished movie:', movie);
+
+        addItemToLocalStorage(movie);
+
+
+
     }
 
 

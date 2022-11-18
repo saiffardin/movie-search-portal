@@ -17,6 +17,9 @@ const Wishlist = () => {
     return (
         <div>
             <h1>Wishlist Page</h1>
+            {
+                wishlist.length === 0 && <h4>Empty Wishlist</h4>
+            }
         </div>
     );
 };
