@@ -1,18 +1,33 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React, {useEffect, useState} from 'react';
 import {Button} from 'react-bootstrap';
-import {addItemToLocalStorage, isItemAlreadyInLocalStorage} from '../../utility/localStorage';
+import {addItemToLocalStorage, getItemFromLocalStorage, isItemAlreadyInLocalStorage, removeItemFromLocalStorage} from '../../utility/localStorage';
 
 const ButtonsWishlist = (props) => {
     const {movie} = props;
+    const [wishlist, setWishlist] = useState([]);
+
+    useEffect(() => {
+        const items = getItemFromLocalStorage();
+
+        if (items) {
+            setWishlist(items);
+        }
+    }, [])
 
     const handleAddToWishlist = (movie) => {
         console.log('wished movie:', movie);
         addItemToLocalStorage(movie);
+        setWishlist(prev => ([
+            ...prev,
+            movie
+        ]))
     }
 
     const handleRemoveFromWishlist = (movie) => {
         console.log('remove this movie:', movie);
-        // addItemToLocalStorage(movie);
+        removeItemFromLocalStorage(movie);
+        setWishlist(prev => prev.filter(obj => obj.id !== movie.id))
     }
 
     return (

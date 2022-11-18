@@ -32,3 +32,13 @@ export const isItemAlreadyInLocalStorage = (newItem) => {
 
     return resultArr.length === 0 ? false : true;
 }
+
+export const removeItemFromLocalStorage = (removeItem) => {
+
+    const itemsInWishlist = getItemFromLocalStorage();
+
+    const updatedWishlist = itemsInWishlist.filter((obj => obj.id !== removeItem.id));
+    localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
+
+
+}

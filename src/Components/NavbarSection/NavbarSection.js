@@ -1,25 +1,15 @@
 import React from 'react';
-
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import {useHistory} from 'react-router-dom';
 
-// import Container from 'react-bootstrap/Container';
-// import Nav from 'react-bootstrap/Nav';
-// import Navbar from 'react-bootstrap/Navbar';
-// import NavDropdown from 'react-bootstrap/NavDropdown';
-
 const NavbarSection = ({navBg}) => {
 
     const history = useHistory();
-
     const routeChangeHandler = (route) => {
         history.push(route);
     }
-
-    console.log('history:', history)
-
 
     return (
         <div className='sticky-top'>

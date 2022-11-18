@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {Badge, Button, Card} from 'react-bootstrap';
+import {Badge, Card} from 'react-bootstrap';
 import {useParams} from 'react-router-dom';
+import ButtonsWishlist from '../Wishlist/ButtonsWishlist';
 // import {Badge, Button, Card, Modal} from 'react-bootstrap';
 
 const MovieDetails = () => {
@@ -17,16 +18,6 @@ const MovieDetails = () => {
             .then((data) => data.json())
             .then((res) => setMovie(res))
     }, [])
-
-    const handleAddToWishlist = (movie) => {
-        console.log('movie:', movie)
-
-    }
-
-    const handleRemoveFromWishlist = (movie) => {
-        console.log('remove this movie:', movie)
-
-    }
 
     return (
 
@@ -110,14 +101,12 @@ const MovieDetails = () => {
 
                         </Card.Body>
 
-                        {/* add to wishlist button */}
-                        <div className="d-grid gap-2 p-1">
-                            <Button variant="danger" onClick={() => handleAddToWishlist(movie)}>
-                                Add to wishlist
-                            </Button>
-                        </div>
+
+                        <ButtonsWishlist movie={movie} />
+
                     </div>
                 </div>
+
             </Card >
         </div>
     );
