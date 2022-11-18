@@ -1,13 +1,12 @@
-import React, {useContext, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Badge, Button, Card} from 'react-bootstrap';
-import {CentralDataContext} from '../../App';
 import {getGenreNameById} from '../../utility/genre';
 import MovieModal from '../MovieModal/MovieModal';
 
 const SingleMovie = (props) => {
     const {movie, showDetailsBtn} = props;
-    const {genres, genreWiseMovies, stylesDivBg} = useContext(CentralDataContext);
-
+    // const {genres} = useContext(CentralDataContext);
+    const [genres, setGenres] = useState([]);
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -16,6 +15,16 @@ const SingleMovie = (props) => {
     const handleMovieDetailsClick = (movie) => {
         handleShow();
     }
+
+    useEffect(() => {
+        const apiKey = process.env.REACT_APP_API;
+
+        const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
+
+        fetch(genreUrl)
+            .then((data) => data.json())
+            .then((res) => setGenres(res.genres))
+    }, [])
 
     return (
         <div className="d-flex justify-content-center my-3">

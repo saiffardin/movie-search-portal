@@ -57,11 +57,11 @@ const TopMoviesList = () => {
             })
     }, [slug])
 
-    useEffect(() => {
-        console.log('%c singleGenre:', 'color:red', singleGenre)
-        console.log('-----------------------')
+    // useEffect(() => {
+    //     console.log('%c singleGenre:', 'color:red', singleGenre)
+    //     console.log('-----------------------')
 
-    }, [singleGenre])
+    // }, [singleGenre])
 
 
     const [filter, setFilter] = useState('Sort By : Default');
@@ -117,7 +117,7 @@ const TopMoviesList = () => {
                         <Col className="d-flex justify-content-center" key={movie.id}>
                             <SingleMovie
                                 movie={movie}
-                                genres={allGenres}
+                                // genres={allGenres}
                                 showDetailsBtn={true}
                             />
                         </Col >

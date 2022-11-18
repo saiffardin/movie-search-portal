@@ -93,7 +93,7 @@ const ShowAllMovies = (props) => {
                         <Col className="d-flex justify-content-center" key={movie.id}>
                             <SingleMovie
                                 movie={movie}
-                                genres={genres}
+                                // genres={genres}
                                 showDetailsBtn={true}
                             />
                         </Col >

@@ -11,7 +11,7 @@ const GenreSpecificMovies = (props) => {
 
     // console.log('-------------------------------')
     // console.log('genres:', genres)
-    console.log('genreWiseMovies:', genreWiseMovies)
+    // console.log('genreWiseMovies:', genreWiseMovies)
     // console.log('stylesDivBg:', stylesDivBg)
 
     return (
