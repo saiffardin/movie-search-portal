@@ -8,6 +8,7 @@ import MovieDetails from "./Components/MovieDetails/MovieDetails";
 import NavbarSection from "./Components/NavbarSection/NavbarSection";
 
 import TopMoviesList from "./Components/TopMoviesList/TopMoviesList";
+import Wishlist from "./Components/Wishlist/Wishlist";
 
 function App() {
 
@@ -37,8 +38,13 @@ function App() {
                     {/* movie details page */}
                     <Route exact path={`/movies/:slug`}>
                         <NavbarSection navBg='dark' />
-
                         <MovieDetails />
+                    </Route>
+
+                    {/* wishlist page */}
+                    <Route exact path={`/wishlist`}>
+                        <NavbarSection navBg='dark' />
+                        <Wishlist />
                     </Route>
 
                     <Route exact path="*">

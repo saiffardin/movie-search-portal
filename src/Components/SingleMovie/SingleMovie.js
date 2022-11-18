@@ -6,6 +6,7 @@ import {getGenreNameById} from '../../utility/genre';
 const SingleMovie = (props) => {
     const {movie, showDetailsBtn} = props;
     const [genres, setGenres] = useState([]);
+    const [wishlist, setWishlist] = useState([]);
     const history = useHistory();
 
     const handleMovieDetailsClick = (movie) => {
@@ -16,8 +17,10 @@ const SingleMovie = (props) => {
 
     const handleAddToWishlist = (movie) => {
         console.log('movie:', movie)
-
+        localStorage.setItem('wishlist', JSON.stringify(movie));
     }
+
+
 
     useEffect(() => {
         const apiKey = process.env.REACT_APP_API;
@@ -27,7 +30,12 @@ const SingleMovie = (props) => {
         fetch(genreUrl)
             .then((data) => data.json())
             .then((res) => setGenres(res.genres))
+
+
+
     }, [])
+
+
 
     return (
         <div className="d-flex justify-content-center my-3">
