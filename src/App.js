@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 import LandingPage from "./Components/LandingPage/LandingPage";
+import MovieDetails from "./Components/MovieDetails/MovieDetails";
 import ShowAllMovies from "./Components/ShowAllMovies/ShowAllMovies";
 import TopMoviesList from "./Components/TopMoviesList/TopMoviesList";
 
@@ -88,6 +89,11 @@ function App() {
                         {/* genre page */}
                         <Route exact path="/genre/:slug">
                             <TopMoviesList />
+                        </Route>
+
+                        {/* movie details page */}
+                        <Route exact path={`/movies/:slug`}>
+                            <MovieDetails />
                         </Route>
 
 

@@ -27,7 +27,7 @@ const ShowEightMovies = (props) => {
                             <SingleMovie
                                 movie={movie}
                                 // genres={genres}
-                                showDetailsBtn={false}
+                                showDetailsBtn={true}
                             />
                         </Col>
                     ))}

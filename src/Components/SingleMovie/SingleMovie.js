@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Badge, Button, Card} from 'react-bootstrap';
+import {useHistory} from 'react-router-dom';
 import {getGenreNameById} from '../../utility/genre';
 import MovieModal from '../MovieModal/MovieModal';
 
@@ -12,8 +13,15 @@ const SingleMovie = (props) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const history = useHistory();
+
+
     const handleMovieDetailsClick = (movie) => {
-        handleShow();
+        // handleShow();
+
+        console.log('movie:', movie)
+        console.log('movie id:', movie.id)
+        history.push(`/movies/${movie.id}`);
     }
 
     useEffect(() => {
