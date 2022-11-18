@@ -7,12 +7,9 @@ import ButtonsWishlist from '../Wishlist/ButtonsWishlist';
 const SingleMovie = (props) => {
     const {movie, showDetailsBtn, setWishlistOfParent = null} = props;
     const [genres, setGenres] = useState([]);
-    // const [wishlist, setWishlist] = useState([]);
     const history = useHistory();
 
     const handleMovieDetailsClick = (movie) => {
-        // console.log('movie:', movie)
-        // console.log('movie id:', movie.id)
         history.push(`/movies/${movie.id}`);
     }
 

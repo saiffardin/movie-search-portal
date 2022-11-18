@@ -1,20 +1,14 @@
-import {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
-
-import React from 'react';
-
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+import React, {useEffect, useState} from 'react';
 import {Col, Dropdown, DropdownButton, Row} from 'react-bootstrap';
+import {useParams} from 'react-router-dom';
 import SingleMovie from '../SingleMovie/SingleMovie';
-
-
-// import {useHistory, useParams} from 'react-router-dom';
-// import {Col, Dropdown, DropdownButton, Row} from 'react-bootstrap';
 
 const MOVIE_NAME = 'Movie Name';
 const RELEASE_YEAR = 'Release Year';
 const RATINGS = 'Ratings';
 const SORTING_OPTIONS = [MOVIE_NAME, RELEASE_YEAR, RATINGS];
-
 
 const TopMoviesList = () => {
     const [allGenres, setAllGenres] = useState([]);
@@ -56,13 +50,6 @@ const TopMoviesList = () => {
                 }));
             })
     }, [slug])
-
-    // useEffect(() => {
-    //     console.log('%c singleGenre:', 'color:red', singleGenre)
-    //     console.log('-----------------------')
-
-    // }, [singleGenre])
-
 
     const [filter, setFilter] = useState('Sort By : Default');
 
@@ -117,7 +104,6 @@ const TopMoviesList = () => {
                         <Col className="d-flex justify-content-center" key={movie.id}>
                             <SingleMovie
                                 movie={movie}
-                                // genres={allGenres}
                                 showDetailsBtn={true}
                             />
                         </Col >

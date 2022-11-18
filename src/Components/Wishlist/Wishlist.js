@@ -3,8 +3,6 @@ import {Col, Row} from 'react-bootstrap';
 import {getItemFromLocalStorage} from '../../utility/localStorage';
 import SingleMovie from '../SingleMovie/SingleMovie';
 
-
-
 const Wishlist = () => {
 
     const [wishlist, setWishlist] = useState([]);

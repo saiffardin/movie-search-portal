@@ -1,8 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from 'react';
 import {Badge, Card} from 'react-bootstrap';
 import {useParams} from 'react-router-dom';
 import ButtonsWishlist from '../Wishlist/ButtonsWishlist';
-// import {Badge, Button, Card, Modal} from 'react-bootstrap';
 
 const MovieDetails = () => {
 

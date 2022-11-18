@@ -15,7 +15,7 @@ const ButtonsWishlist = (props) => {
     }, [])
 
     const handleAddToWishlist = (movie) => {
-        console.log('wished movie:', movie);
+
         addItemToLocalStorage(movie);
         setWishlist(prev => ([
             ...prev,
@@ -24,12 +24,11 @@ const ButtonsWishlist = (props) => {
     }
 
     const handleRemoveFromWishlist = (movie) => {
-        console.log('remove this movie:', movie);
+
         removeItemFromLocalStorage(movie);
         setWishlist(prev => prev.filter(obj => obj.id !== movie.id));
 
         if (setWishlistOfParent) {
-            console.log('%c not null', 'color:coral');
             setWishlistOfParent(prev => prev.filter(obj => obj.id !== movie.id))
         }
     }
@@ -52,7 +51,6 @@ const ButtonsWishlist = (props) => {
                     </Button>
                 </div>
             )
-
     );
 };
 
