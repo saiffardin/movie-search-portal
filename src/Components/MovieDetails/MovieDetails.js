@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {Badge, Card} from 'react-bootstrap';
+import {Badge, Button, Card} from 'react-bootstrap';
 import {useParams} from 'react-router-dom';
 // import {Badge, Button, Card, Modal} from 'react-bootstrap';
-
 
 const MovieDetails = () => {
 
@@ -19,6 +18,11 @@ const MovieDetails = () => {
             .then((res) => setMovie(res))
     }, [])
 
+    const handleAddToWishlist = (movie) => {
+        console.log('movie:', movie)
+
+    }
+
     return (
 
         <div className='m-1 m-md-2 my-lg-5 overflow-hidden'>
@@ -29,10 +33,7 @@ const MovieDetails = () => {
                         {
                             movie.poster_path ? (<img alt="poster_img" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className='img-fluid' style={{'width': '400px'}} />) : <span>Loading...</span>
                         }
-
-
                     </div>
-
 
                     <div className='col-md-6 col-xl-4 right-side-details'>
                         <Card.Body className=''>
@@ -103,10 +104,15 @@ const MovieDetails = () => {
                             </div>
 
                         </Card.Body>
+
+                        {/* add to wishlist button */}
+                        <div className="d-grid gap-2 p-1">
+                            <Button variant="danger" onClick={() => handleAddToWishlist(movie)}>
+                                Add to wishlist
+                            </Button>
+                        </div>
                     </div>
                 </div>
-
-
             </Card >
         </div>
     );

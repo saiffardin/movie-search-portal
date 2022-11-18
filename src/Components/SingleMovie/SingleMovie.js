@@ -14,6 +14,11 @@ const SingleMovie = (props) => {
         history.push(`/movies/${movie.id}`);
     }
 
+    const handleAddToWishlist = (movie) => {
+        console.log('movie:', movie)
+
+    }
+
     useEffect(() => {
         const apiKey = process.env.REACT_APP_API;
 
@@ -71,6 +76,13 @@ const SingleMovie = (props) => {
                         </Button>
                     </div>
                 }
+
+                {/* add to wishlist button */}
+                <div className="d-grid gap-2 p-1">
+                    <Button variant="outline-danger" onClick={() => handleAddToWishlist(movie)}>
+                        Add to wishlist
+                    </Button>
+                </div>
             </Card >
         </div>
     );
