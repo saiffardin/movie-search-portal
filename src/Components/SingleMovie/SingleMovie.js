@@ -2,25 +2,15 @@ import React, {useEffect, useState} from 'react';
 import {Badge, Button, Card} from 'react-bootstrap';
 import {useHistory} from 'react-router-dom';
 import {getGenreNameById} from '../../utility/genre';
-import MovieModal from '../MovieModal/MovieModal';
 
 const SingleMovie = (props) => {
     const {movie, showDetailsBtn} = props;
-    // const {genres} = useContext(CentralDataContext);
     const [genres, setGenres] = useState([]);
-
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
     const history = useHistory();
 
-
     const handleMovieDetailsClick = (movie) => {
-        // handleShow();
-
-        console.log('movie:', movie)
-        console.log('movie id:', movie.id)
+        // console.log('movie:', movie)
+        // console.log('movie id:', movie.id)
         history.push(`/movies/${movie.id}`);
     }
 
@@ -82,15 +72,6 @@ const SingleMovie = (props) => {
                     </div>
                 }
             </Card >
-
-            {/* modal movie details */}
-            <MovieModal
-                show={show}
-                handleClose={handleClose}
-                movie={movie}
-                genres={genres}
-            />
-
         </div>
     );
 };

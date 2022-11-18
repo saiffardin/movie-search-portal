@@ -4,19 +4,6 @@ import {useParams} from 'react-router-dom';
 // import {Badge, Button, Card, Modal} from 'react-bootstrap';
 
 
-const MOVIE_DETAILS_KEYS = [
-    'poster_path',
-    'title',
-    'release_date',
-    'genres',
-    'original_language',
-    'original_title',
-    'overview',
-    'popularity',
-    'vote_average',
-    'vote_count'
-]
-
 const MovieDetails = () => {
 
     const {slug} = useParams();
@@ -29,18 +16,7 @@ const MovieDetails = () => {
 
         fetch(movieDetailsUrl)
             .then((data) => data.json())
-            .then((res) => {
-                console.clear();
-                console.log('res - movie/movieId:', res)
-                console.log('----------------')
-                MOVIE_DETAILS_KEYS.map(option => {
-                    console.log(option, '-', res[option])
-                })
-                console.log('----------------')
-
-                setMovie(res)
-
-            })
+            .then((res) => setMovie(res))
     }, [])
 
     return (
@@ -56,9 +32,11 @@ const MovieDetails = () => {
 
                     <div className='col-md-6 col-xl-4 right-side-details'>
                         <Card.Body className=''>
+                            {/* movie title */}
                             <Card.Title className='text-center' >{movie.title}</Card.Title>
                             <hr />
 
+                            {/* rest of the stuff */}
                             <div>
                                 {/* release_date */}
                                 <Card.Subtitle className='my-2'>Release Date:
@@ -130,18 +108,5 @@ const MovieDetails = () => {
     );
 };
 
-/*'
-['poster_path',
-'title',
-'release_date',
-'genre_ids',
-'original_language',
-'original_title',
-'overview',
-'popularity',
-'vote_average',
-'vote_count']
-
-*/
 
 export default MovieDetails;

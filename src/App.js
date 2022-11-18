@@ -6,7 +6,6 @@ import {
 import './App.css';
 import LandingPage from "./Components/LandingPage/LandingPage";
 import MovieDetails from "./Components/MovieDetails/MovieDetails";
-import ShowAllMovies from "./Components/ShowAllMovies/ShowAllMovies";
 import TopMoviesList from "./Components/TopMoviesList/TopMoviesList";
 
 export const CentralDataContext = createContext();
@@ -17,12 +16,6 @@ function App() {
     const apiKey = process.env.REACT_APP_API;
 
     const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
-
-    const trendingMoviesUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`;
-
-    const topRatedMoviesUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`;
-
-    const upcomingMoviesUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`;
 
     const [genres, setGenres] = useState([]);
     const [genreWiseMovies, setGenreWiseMovies] = useState([]);
@@ -67,14 +60,7 @@ function App() {
                     <Switch>
                         {/* landing page */}
                         <Route exact path="/">
-                            <LandingPage
-                                genres={genres}
-                                genreWiseMovies={genreWiseMovies}
-
-                                trendingMoviesUrl={trendingMoviesUrl}
-                                topRatedMoviesUrl={topRatedMoviesUrl}
-                                upcomingMoviesUrl={upcomingMoviesUrl}
-                            />
+                            <LandingPage />
                         </Route>
 
                         {/* landing page */}
@@ -94,37 +80,6 @@ function App() {
                         {/* movie details page */}
                         <Route exact path={`/movies/:slug`}>
                             <MovieDetails />
-                        </Route>
-
-
-                        <Route exact path={`/trending/view-all`}>
-                            {/* show all - trending */}
-                            <ShowAllMovies
-                                genres={genres}
-                                divBg="trending"
-                                sectionTitle="Trending Movies"
-                                url={trendingMoviesUrl}
-                            />
-                        </Route>
-
-                        <Route exact path={`/top-rated/view-all`}>
-                            {/* show all - top-rated */}
-                            <ShowAllMovies
-                                genres={genres}
-                                divBg="top-rated"
-                                sectionTitle="Top Rated Movies"
-                                url={topRatedMoviesUrl}
-                            />
-                        </Route>
-
-                        <Route exact path={`/upcoming/view-all`}>
-                            {/* show all - upcoming */}
-                            <ShowAllMovies
-                                genres={genres}
-                                divBg="upcoming"
-                                sectionTitle="Upcoming Movies"
-                                url={upcomingMoviesUrl}
-                            />
                         </Route>
 
                         <Route exact path="*">
