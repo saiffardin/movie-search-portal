@@ -16,9 +16,8 @@ const Wishlist = () => {
 
     return (
         <div className='bgGenre w-100 py-3'>
-            <h1>Wishlist Page</h1>
             {
-                wishlist.length === 0 && <h4>Empty Wishlist</h4>
+                wishlist.length === 0 && <h2 className='text-center'>Wishlist Empty</h2>
             }
 
             <div className="container">
@@ -28,7 +27,7 @@ const Wishlist = () => {
                             <SingleMovie
                                 movie={movie}
                                 showDetailsBtn={true}
-
+                                setWishlistOfParent={setWishlist}
                             />
                         </Col >
                     ))}

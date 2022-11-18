@@ -5,7 +5,7 @@ import {getGenreNameById} from '../../utility/genre';
 import ButtonsWishlist from '../Wishlist/ButtonsWishlist';
 
 const SingleMovie = (props) => {
-    const {movie, showDetailsBtn} = props;
+    const {movie, showDetailsBtn, setWishlistOfParent = null} = props;
     const [genres, setGenres] = useState([]);
     // const [wishlist, setWishlist] = useState([]);
     const history = useHistory();
@@ -45,7 +45,7 @@ const SingleMovie = (props) => {
                         <Card.Subtitle className=''>Genre:
                             <span className=' fw-light' >
                                 {
-                                    movie.genre_ids.map((id) => {
+                                    movie.genre_ids?.map((id) => {
                                         return (
                                             <span key={movie.id + id}>
                                                 {' '}
@@ -75,7 +75,7 @@ const SingleMovie = (props) => {
                     </div>
                 }
 
-                <ButtonsWishlist movie={movie} />
+                <ButtonsWishlist movie={movie} setWishlistOfParent={setWishlistOfParent} />
             </Card >
         </div>
     );

@@ -4,12 +4,11 @@ import {Button} from 'react-bootstrap';
 import {addItemToLocalStorage, getItemFromLocalStorage, isItemAlreadyInLocalStorage, removeItemFromLocalStorage} from '../../utility/localStorage';
 
 const ButtonsWishlist = (props) => {
-    const {movie} = props;
+    const {movie, setWishlistOfParent = null} = props;
     const [wishlist, setWishlist] = useState([]);
 
     useEffect(() => {
         const items = getItemFromLocalStorage();
-
         if (items) {
             setWishlist(items);
         }
@@ -27,7 +26,12 @@ const ButtonsWishlist = (props) => {
     const handleRemoveFromWishlist = (movie) => {
         console.log('remove this movie:', movie);
         removeItemFromLocalStorage(movie);
-        setWishlist(prev => prev.filter(obj => obj.id !== movie.id))
+        setWishlist(prev => prev.filter(obj => obj.id !== movie.id));
+
+        if (setWishlistOfParent) {
+            console.log('%c not null', 'color:coral');
+            setWishlistOfParent(prev => prev.filter(obj => obj.id !== movie.id))
+        }
     }
 
     return (
