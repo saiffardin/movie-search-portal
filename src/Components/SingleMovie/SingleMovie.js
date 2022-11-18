@@ -7,7 +7,7 @@ import ButtonsWishlist from '../Wishlist/ButtonsWishlist';
 const SingleMovie = (props) => {
     const {movie, showDetailsBtn} = props;
     const [genres, setGenres] = useState([]);
-    const [wishlist, setWishlist] = useState([]);
+    // const [wishlist, setWishlist] = useState([]);
     const history = useHistory();
 
     const handleMovieDetailsClick = (movie) => {
@@ -15,16 +15,6 @@ const SingleMovie = (props) => {
         // console.log('movie id:', movie.id)
         history.push(`/movies/${movie.id}`);
     }
-
-    // const handleAddToWishlist = (movie) => {
-    //     console.log('wished movie:', movie);
-    //     addItemToLocalStorage(movie);
-    // }
-
-    // const handleRemoveFromWishlist = (movie) => {
-    //     console.log('remove this movie:', movie);
-    //     // addItemToLocalStorage(movie);
-    // }
 
     useEffect(() => {
         const apiKey = process.env.REACT_APP_API;
@@ -34,11 +24,7 @@ const SingleMovie = (props) => {
         fetch(genreUrl)
             .then((data) => data.json())
             .then((res) => setGenres(res.genres))
-
-
-
     }, [])
-
 
 
     return (
