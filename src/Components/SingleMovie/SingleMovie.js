@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Badge, Button, Card} from 'react-bootstrap';
 import {useHistory} from 'react-router-dom';
 import {getGenreNameById} from '../../utility/genre';
-import {addItemToLocalStorage} from '../../utility/localStorage';
+import ButtonsWishlist from '../Wishlist/ButtonsWishlist';
 
 const SingleMovie = (props) => {
     const {movie, showDetailsBtn} = props;
@@ -16,17 +16,15 @@ const SingleMovie = (props) => {
         history.push(`/movies/${movie.id}`);
     }
 
-    const handleAddToWishlist = (movie) => {
+    // const handleAddToWishlist = (movie) => {
+    //     console.log('wished movie:', movie);
+    //     addItemToLocalStorage(movie);
+    // }
 
-        console.log('wished movie:', movie);
-
-        addItemToLocalStorage(movie);
-
-
-
-    }
-
-
+    // const handleRemoveFromWishlist = (movie) => {
+    //     console.log('remove this movie:', movie);
+    //     // addItemToLocalStorage(movie);
+    // }
 
     useEffect(() => {
         const apiKey = process.env.REACT_APP_API;
@@ -85,18 +83,13 @@ const SingleMovie = (props) => {
                 {
                     showDetailsBtn &&
                     <div className="d-grid gap-2 p-1">
-                        <Button variant="outline-success" onClick={() => handleMovieDetailsClick(movie)}>
+                        <Button variant="outline-dark" onClick={() => handleMovieDetailsClick(movie)}>
                             Show Movie Details
                         </Button>
                     </div>
                 }
 
-                {/* add to wishlist button */}
-                <div className="d-grid gap-2 p-1">
-                    <Button variant="outline-danger" onClick={() => handleAddToWishlist(movie)}>
-                        Add to wishlist
-                    </Button>
-                </div>
+                <ButtonsWishlist movie={movie} />
             </Card >
         </div>
     );

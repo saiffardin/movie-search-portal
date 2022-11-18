@@ -23,6 +23,11 @@ const MovieDetails = () => {
 
     }
 
+    const handleRemoveFromWishlist = (movie) => {
+        console.log('remove this movie:', movie)
+
+    }
+
     return (
 
         <div className='m-1 m-md-2 my-lg-5 overflow-hidden'>

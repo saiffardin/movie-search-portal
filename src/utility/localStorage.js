@@ -19,5 +19,16 @@ export const addItemToLocalStorage = (item) => {
 
 
 export const getItemFromLocalStorage = () => {
-    return JSON.parse(localStorage.getItem('wishlist'));
+
+    let wishlistArr = JSON.parse(localStorage.getItem('wishlist'));
+
+    return wishlistArr || [];
+}
+
+export const isItemAlreadyInLocalStorage = (newItem) => {
+    const itemsInWishlist = getItemFromLocalStorage();
+
+    const resultArr = itemsInWishlist.filter((obj => obj.id === newItem.id));
+
+    return resultArr.length === 0 ? false : true;
 }
