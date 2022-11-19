@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button, Card} from 'react-bootstrap';
 import {useHistory} from 'react-router-dom';
+import {getMoviePosterUrl} from '../../utility/apiUrls';
 import ButtonsWishlist from '../Wishlist/ButtonsWishlist';
 
 const SingleSwiperMovie = (props) => {
@@ -15,7 +16,7 @@ const SingleSwiperMovie = (props) => {
         <div className="my-5">
             <Card style={{width: '18rem'}} className='m-2 ms-md-4'>
 
-                <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className='' />
+                <Card.Img variant="top" src={getMoviePosterUrl(movie.poster_path)} className='' />
                 <Card.Body>
                     <Card.Title className='text-center'>{movie.title}</Card.Title>
                 </Card.Body>

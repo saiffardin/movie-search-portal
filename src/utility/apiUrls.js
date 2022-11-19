@@ -6,3 +6,4 @@ export const getMoviesByGenreUrl = (genreId) => `https://api.themoviedb.org/3/di
 
 export const getMovieDetailsUrl = (movieId) => `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
 
+export const getMoviePosterUrl = (path) => `https://image.tmdb.org/t/p/w500${path}`

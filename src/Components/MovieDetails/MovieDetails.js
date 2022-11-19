@@ -2,7 +2,7 @@
 import React, {useEffect, useState} from 'react';
 import {Badge, Card} from 'react-bootstrap';
 import {useParams} from 'react-router-dom';
-import {getMovieDetailsUrl} from '../../utility/apiUrls';
+import {getMovieDetailsUrl, getMoviePosterUrl} from '../../utility/apiUrls';
 import ButtonsWishlist from '../Wishlist/ButtonsWishlist';
 
 const MovieDetails = () => {
@@ -24,7 +24,7 @@ const MovieDetails = () => {
 
                     <div className="col-md-6 left-side-details d-flex justify-content-center justify-content-md-end ">
                         {
-                            movie.poster_path ? (<img alt="poster_img" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className='img-fluid' style={{'width': '400px'}} />) : <span>Loading...</span>
+                            movie.poster_path ? (<img alt="poster_img" src={getMoviePosterUrl(movie.poster_path)} className='img-fluid' style={{'width': '400px'}} />) : <span>Loading...</span>
                         }
                     </div>
 
