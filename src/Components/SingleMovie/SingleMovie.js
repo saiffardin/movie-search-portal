@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Badge, Button, Card} from 'react-bootstrap';
 import {useHistory} from 'react-router-dom';
+import {getGenresUrl} from '../../utility/apiUrls';
 import {getGenreNameById} from '../../utility/genre';
 import ButtonsWishlist from '../Wishlist/ButtonsWishlist';
 
@@ -14,15 +15,10 @@ const SingleMovie = (props) => {
     }
 
     useEffect(() => {
-        const apiKey = process.env.REACT_APP_API;
-
-        const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
-
-        fetch(genreUrl)
+        fetch(getGenresUrl())
             .then((data) => data.json())
             .then((res) => setGenres(res.genres))
     }, [])
-
 
     return (
         <div className="d-flex justify-content-center my-3">
@@ -72,6 +68,7 @@ const SingleMovie = (props) => {
                     </div>
                 }
 
+                {/* wishlist button */}
                 <ButtonsWishlist movie={movie} setWishlistOfParent={setWishlistOfParent} />
             </Card >
         </div>

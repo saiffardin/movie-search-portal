@@ -7,23 +7,18 @@ import './App.css';
 import LandingPage from "./Components/LandingPage/LandingPage";
 import MovieDetails from "./Components/MovieDetails/MovieDetails";
 import NavbarSection from "./Components/NavbarSection/NavbarSection";
-
 import TopMoviesList from "./Components/TopMoviesList/TopMoviesList";
 import Wishlist from "./Components/Wishlist/Wishlist";
+import {getGenresUrl} from "./utility/apiUrls";
 
 function App() {
 
     const [genres, setGenres] = useState([]);
     useEffect(() => {
-        const apiKey = process.env.REACT_APP_API;
-
-        const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
-
-        fetch(genreUrl)
+        fetch(getGenresUrl())
             .then((data) => data.json())
             .then((res) => setGenres(res.genres))
     }, [])
-
 
     return (
         <Router>
@@ -67,7 +62,6 @@ function App() {
                 </Switch>
             </div>
         </Router>
-
     );
 }
 

@@ -3,6 +3,7 @@
 import React, {useEffect, useState} from 'react';
 import {Col, Dropdown, DropdownButton, Row} from 'react-bootstrap';
 import {useParams} from 'react-router-dom';
+import {getGenresUrl, getMoviesByGenreUrl} from '../../utility/apiUrls';
 import SingleMovie from '../SingleMovie/SingleMovie';
 
 const MOVIE_NAME = 'Movie Name';
@@ -16,15 +17,10 @@ const TopMoviesList = () => {
     const [singleGenre, setSingleGenre] = useState({});
     const {slug} = useParams();
 
-    const apiKey = process.env.REACT_APP_API;
-
-    const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
-
     useEffect(() => {
-        fetch(genreUrl)
+        fetch(getGenresUrl())
             .then((data) => data.json())
             .then((res) => {
-
                 setAllGenres(res.genres);
 
                 const thisGenre = res.genres.find(genre => genre.id.toString() === slug);
@@ -41,7 +37,7 @@ const TopMoviesList = () => {
 
     useEffect(() => {
 
-        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${slug}`)
+        fetch(getMoviesByGenreUrl(slug))
             .then((data) => data.json())
             .then((res) => {
                 setSingleGenre(prevState => ({

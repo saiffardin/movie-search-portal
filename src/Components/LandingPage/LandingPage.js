@@ -1,27 +1,23 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from 'react';
+import {getGenresUrl, getMoviesByGenreUrl} from '../../utility/apiUrls';
 import ShowMovies from '../ShowMovies/ShowMovies';
 
 const LandingPage = () => {
-    const apiKey = process.env.REACT_APP_API;
-    const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`;
     const [genres, setGenres] = useState([]);
     const [genreWiseMovies, setGenreWiseMovies] = useState([]);
     const stylesDivBg = ['bgBlue', 'bgGrey', 'bgGreenish'];
 
     useEffect(() => {
-        fetch(genreUrl)
+        fetch(getGenresUrl())
             .then((data) => data.json())
             .then((res) => setGenres(res.genres))
     }, [])
 
     useEffect(() => {
-
-        // eslint-disable-next-line array-callback-return
         genres.map((singleGenre) => {
-            const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${singleGenre.id}`;
-
-            fetch(url)
+            fetch(getMoviesByGenreUrl(singleGenre.id))
                 .then((data) => data.json())
                 .then((res) => {
                     setGenreWiseMovies((prevState => {

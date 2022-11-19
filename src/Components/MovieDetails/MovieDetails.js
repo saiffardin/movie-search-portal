@@ -2,6 +2,7 @@
 import React, {useEffect, useState} from 'react';
 import {Badge, Card} from 'react-bootstrap';
 import {useParams} from 'react-router-dom';
+import {getMovieDetailsUrl} from '../../utility/apiUrls';
 import ButtonsWishlist from '../Wishlist/ButtonsWishlist';
 
 const MovieDetails = () => {
@@ -10,11 +11,7 @@ const MovieDetails = () => {
     const [movie, setMovie] = useState({});
 
     useEffect(() => {
-        const apiKey = process.env.REACT_APP_API;
-
-        const movieDetailsUrl = `https://api.themoviedb.org/3/movie/${slug}?api_key=${apiKey}`;
-
-        fetch(movieDetailsUrl)
+        fetch(getMovieDetailsUrl(slug))
             .then((data) => data.json())
             .then((res) => setMovie(res))
     }, [])
