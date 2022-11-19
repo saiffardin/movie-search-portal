@@ -1,107 +1,143 @@
-# kona-frontend
+# cefalo-frontend-react
 
-Live Site Link: [https://movie-search-portal.netlify.app/](https://movie-search-portal.netlify.app/)
+Latest live site (cefalo): [https://cefalo-movie-portal.netlify.app/](https://cefalo-movie-portal.netlify.app/)
+
+~~Previous version live site: [https://movie-search-portal.netlify.app/](https://movie-search-portal.netlify.app/)~~
+
+---
+## `How To Run:` 
+
+1. You need to have *node.js* and *npm* installed in your system. 
+    - It's suggested to use *node* `v14`, and *npm* `v6`.
+2. Clone this repository by the following command -
+    - `git clone https://github.com/saiffardin/movie-search-portal.git`
+3. Open up the cloned project in *vs code* editor.
+4. From the terminal of *vs code*, execute the following commands one by one:
+    - `npm install`
+    - `npm start` 
 
 ---
 
 ## `Key Features:`
 
-1. A responsive landing page that has 3 categories of movies, such:
-    - trending movies
-    - top rated movies
-    - upcoming movies
-2. In landing page each category of movies is a collection of eight movies with a *view all* button at the end.
-3. Clicking on the *view all* button -
-    - will redirect the user to a new page. 
-    - contents of this page depends on the category the user has clicked upon.
-5. User can view all the movies through pagination.
-6. In that page each movie has -
-    - a *Show Movie Details* button. 
-    - by clicking this button user can see movie's detail information.
-6. User can also search for movies within the current page.
-7. User can search through movies based on these 4 filters:
-    - *movie name*
-    - *release year*
-    - *overview*
-    - *genre*
+1. The **Landing Page** has these following functionalities:
+    - Listing of all the movie genres based on the [get list of genres](#genreList) TMDb API.
+
+    - Random 5 movie names along with its poster image for each movie genre. Poster image of a movie is retrieved using [get movies from a specific genre](#genreSpecificMovies) TMDb API.
+
+    - Each movie genre has a *View More Movies* button. Clicking upon this button takes user to the **Movie Genre Page**.
+
+
+2. The **Movie Genre Page** has the following functionalities:
+     - Listing of 10 movies in that genre.
+     - Sorting amongst the list of movies. The sorting is done based on : 
+        - *movie name*
+        - *released year*
+        - *ratings*
+
+
+3. Each movie `card` has a *Show Movie Details* btn. Clicking upon this takes user to the **Movie Details Page**. This page displays the following information about the movie : 
+
+    - Poster image
+    - Title
+    - Release Date
+    - Genre
+    - Original Language
+    - Original Title
+    - Overview
+    - Popularity
+    - Ratings
+    - Vote Count
+
+4. User's **wishlist** functionality:
+    - a user can add/remove any movie to his *wishlist* from -
+        - *home page*
+        - *genre page*
+        - *movie detail page*
+    - user can find all his wishlist movies in **Wishlist Page**.
 
 ## `Front-End Technologies:`
 
 - React
 - Bootstrap 5
 - Netlify
+- Local Storage
 
 ## `Project Architecture:`
 
-This part of the doc resembles the whole coding flow of this repository. This project has 5 *components*, such:
-1. [LandingPage](#showAllMovies)
-2. [ShowEightMovies](#showEightMovies)
-3. [SingleMovie](#singleMovie)
-4. [MovieModal](#movieModal)
-5. [ShowAllMovies](#showAllMovies)
+This part of the doc resembles the whole coding flow of this repository. This project has 9 *components*, such:
+1. [NavbarSection](#NavbarSection)
+2. [LandingPage](#LandingPage)
+3. [ShowMovies](#ShowMovies)
+4. [SingleSwiperMovie](#SingleSwiperMovie)
+5. [TopMoviesList](#TopMoviesList)
+6. [SingleMovie](#SingleMovie)
+7. [MovieDetails](#MovieDetails)
+8. [Wishlist](#Wishlist)
+9. [ButtonsWishlist](#ButtonsWishlist)
 
 ---
 
-### [LandingPage.js](./src/Components/LandingPage/LandingPage.js) <span id="showAllMovies"></span> : 
-
-This component's responsibility is to show 3 categorized movie's list on landing page. It calls one api for each of the category. Here -
-- to fetch the *trending* movies, it calls the [trending movies api](#trendingMovies),
-- to fetch the *top rated* movies, it calls the [top rated movies api](#topRatedMovies), and
-- to fetch the *upcoming* movies, it calls the [upcoming movies api](#upcomingMovies)
-
-All of the three categories consist 8 movies each. This is done by reusing [ShowEightMovies](#showEightMovies) component.
+### [NavbarSection.js](./src/Components/NavbarSection/NavbarSection.js) <span id="NavbarSection"></span> : 
+This component's responsibility is to show 3 nav menus on every page we route through. With the help of those 3 menus, we can navigate to our *landing page*, *wishlist page*, and any *genre page* we choose upon.
 
 ---
 
-### [ShowEightMovies.js](./src/Components/ShowEightMovies/ShowEightMovies.js) <span id="showEightMovies"></span> : 
-This is a reusable component. It renders eight movies of a single category along with a *view all* button at the bottom. To render 8 movies it reuses [SingleMovie](#singleMovie) component. 
+### [LandingPage.js](./src/Components/LandingPage/LandingPage.js) <span id="LandingPage"></span> : 
+This component finds all the movie genres by calling [get list of genres](#genreList) api. Then it calls [get movies from a specific genre](#genreSpecificMovies) api to find movies of that genre. To show 5 movies of every genre in the landing page, this component uses [ShowMovies](#ShowMovies) component for every genre available. 
 
 ---
 
-### [SingleMovie.js](./src/Components/SingleMovie/SingleMovie.js) <span id="singleMovie"></span> : 
-This component is being reused in [ShowEightMovies](#showEightMovies) component, and [ShowAllMovies](#showAllMovies) component. This component's core responsibility is to design the view of every single movie card.
-It does that with the help of *Card* component provided by react-bootstrap. Each card contains movie's poster, title, release date, genre and ratings. SingleMovie component reuses [MovieModal](#movieModal) component to deal with pop-ups. 
+### [ShowMovies.js](./src/Components/ShowMovies/ShowMovies.js) <span id="ShowMovies"></span> : 
+This component uses the *swiper* library, and [SingleSwiperMovie](#SingleSwiperMovie) component to render 5 movies of a specific genre. Also, at the bottom, it has a button called *view more movies*, which takes user to the movie genre page.
 
 ---
 
-### [MovieModal.js](./src/Components/MovieModal/MovieModal.js) <span id="movieModal"></span> : 
-It renders react-bootstrap's *Modal* component to show movie details. The movie detail contains movie's title, release date, original language, original title, overview, popularity, ratings and view count. This modal only appears when the user clicks on *Show Movie Details* button.
+### [SingleSwiperMovie.js](./src/Components/SingleSwiperMovie/SingleSwiperMovie.js) <span id="SingleSwiperMovie"></span> : 
+The look-and-design of every movie card in the landing page is determine by this component. 
 
 ---
 
-### [ShowAllMovies.js](./src/Components/ShowAllMovies/ShowAllMovies.js) <span id="showAllMovies"></span> : 
-This component renders all the movies of a certain category. In this component, search filter and pagination is implemented. Users can view all the movies by pagination. Pagination is done with the help of a library called *react-paginate*.
-
-For every time user paginates to a different page, one of the get movies api ([trending movies api](#trendingMovies) or [top rated movies api](#topRatedMovies) or [upcoming movies api](#upcomingMovies)) is being called with a query param such: `&page={{pageNumber}}`.
-
-On the other hand, the search filter allows users to search through movies within a page. This searching can be done based on four filters such: movie name, release year, overview and genre. 
+### [TopMoviesList.js](./src/Components/TopMoviesList/TopMoviesList.js) <span id="TopMoviesList"></span> : 
+This component renders 10 movies of a certain genre. To render each movie it uses [SingleMovie](#SingleMovie) component. Also, *sorting* is implemented in this component. Users can sort movies based on *movie name*, *release date* and *ratings*. 
 
 ---
 
-### [genre.js](./src/utility/genre.js) : 
-This file contains two helper functions, such : 
-1. `getGenreNameById(arr,id)` 
-2. `getAllGenreNameByIdArray(arr,idArray)`
+### [SingleMovie.js](./src/Components/SingleMovie/SingleMovie.js) <span id="SingleMovie"></span> : 
+This component is being reused in [TopMoviesList](#TopMoviesList) component, and [Wishlist](#Wishlist) component. This component's core responsibility is to design the view of every single movie card used in those components.
+It does that with the help of *Card* component provided by react-bootstrap. Each card contains movie's poster, title, release date, genre and ratings etc. 
 
-`arr` parameter for both of the functions is an array of objects, means each element of that array is an object. In this project `arr` will contain a list of genres. Each object of that array has a genre id and genre name.
+---
 
-The second parameter of `getGenreNameById` is `id`, which represents a single genre id. `getGenreNameById` function searches through list of genres for the given id, and returns genre name.
+### [MovieDetails.js](./src/Components/MovieDetails/MovieDetails.js) <span id="MovieDetails"></span> : 
+This component contains the details of a movie, such: movie's title, release date, original language, original title, overview, popularity, ratings and view count.
 
-On the other hand, the second parameter of `getAllGenreNameByIdArray` function is an `idArray`, which represents an array of genre id's. This function searches through the list of genres for every single id given in `idArray`, and returns an array which has all the genre names corresponding to every id in `idArray`.
+---
+
+### [Wishlist.js](./src/Components/Wishlist/Wishlist.js) <span id="Wishlist"></span> : 
+This component is responsible for the view of *wishlist page*. It gets the wishlist from the browser's *local storage*, and then it uses [SingleMovie](#SingleMovie) component to render the UI.
+
+---
+
+### [ButtonsWishlist.js](./src/Components/Wishlist/ButtonsWishlist.js) <span id="ButtonsWishlist"></span> : 
+This is a reusable component, which has been used in [MovieDetails](#MovieDetails) , [SingleMovie](#SingleMovie) and [SingleSwiperMovie](#SingleSwiperMovie) components. This component enables user to add or remove a movie to *wishlist* from landing page, genre page and movie details page.
+
+Based on conditional rendering this component shows either *Add to wishlist* button or *Remove from wishlist* button. This component uses browser's *local storage* to add or remove movies from wishlist.
 
 ---
 
 ## `List of APIs:`
 
-- get trending movies: <span id="trendingMovies"></span> `https://api.themoviedb.org/3/trending/movie/day?api_key={{api}}`
+- get list of genres : <span id="genreList"></span> `https://api.themoviedb.org/3/genre/movie/list?api_key={{apiKey}}&language=en-US`
 
-- get top rated movies: <span id="topRatedMovies"></span> `https://api.themoviedb.org/3/movie/top_rated?api_key={{api}}`
 
-- get upcoming movies: <span id="upcomingMovies"></span> `https://api.themoviedb.org/3/movie/upcoming?api_key={{api}}`
+- get movies from a specific genre : <span id="genreSpecificMovies"></span> `https://api.themoviedb.org/3/discover/movie?api_key={{apiKey}}&with_genres={{genreId}}`
 
-- get genre ids: <span id="genreIds"></span> `https://api.themoviedb.org/3/genre/movie/list?api_key={{api}}&language=en-US`
 
-- get poster image: <span id="posterImg"></span> `https://image.tmdb.org/t/p/w500/{{imgUrl}}`
+- get a single movie details : <span id="movieDetails"></span> `https://api.themoviedb.org/3/movie/{{movieID}}?api_key={{apiKey}}`
+
+
+- get movie poster : <span id="posterImg"></span> `https://image.tmdb.org/t/p/w500/{{imgUrl}}`
 
 ---
 
@@ -113,36 +149,3 @@ On the other hand, the second parameter of `getAllGenreNameByIdArray` function i
 
 ---
 
-- Landing Page : Tablet
-    
-    ![Landing Page : Tablet](./screenshots/2.landing_page%20_tablet.png)
-
----
-
-- Landing Page : Mobile
-    
-    ![Landing Page : Mobile](./screenshots/3.landing_page_mobile.png)
-
----
-
-- All Top Rated : Desktop
-    
-    ![All Top Rated : Desktop](./screenshots/4.png)
-
----
-
-- Movie Details : Desktop
-    
-    ![All Top Rated : Desktop](./screenshots/5_movie_details_desktop.png)
-
----
-
-- Movie Details : Tablet
-    
-    ![All Top Rated : Tablet](./screenshots/6_movie_details_tablet.png)
-
----
-
-- Movie Details : Mobile
-    
-    ![All Top Rated : Mobile](./screenshots/7_movie_details_phone.png)

@@ -62,6 +62,12 @@ const ShowMovies = (props) => {
                             slidesPerView: 3,
                         },
 
+                        // when window width is >= 1280px
+                        1280: {
+                            width: 1280,
+                            slidesPerView: 3,
+                        },
+
                         // when window width is >= 1440px
                         1440: {
                             width: 1440,
