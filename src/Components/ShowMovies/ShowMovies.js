@@ -13,7 +13,7 @@ const ShowMovies = (props) => {
     const {divBg, sectionTitle, movies, genreId} = props;
     const history = useHistory();
 
-    const handleViewAllClick = (divBg) => {
+    const handleViewMoreClick = (divBg) => {
         history.push(`/genre/${genreId}`);
     }
 
@@ -83,7 +83,7 @@ const ShowMovies = (props) => {
                 {/* view all button */}
                 <div className=" text-center my-2 my-md-4">
                     {/* <div className=" d-flex w-100"> */}
-                    <Button variant="danger" size="lg" onClick={() => handleViewAllClick(divBg)}>
+                    <Button variant="danger" size="lg" onClick={() => handleViewMoreClick(divBg)}>
                         View More {sectionTitle} Movies
                     </Button>
                 </div>
