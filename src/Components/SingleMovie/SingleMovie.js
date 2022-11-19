@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {Badge, Button, Card} from 'react-bootstrap';
 import {useHistory} from 'react-router-dom';
 import {getGenresUrl, getMoviePosterUrl} from '../../utility/apiUrls';
-import {getGenreNameById} from '../../utility/genre';
 import ButtonsWishlist from '../Wishlist/ButtonsWishlist';
 
 const SingleMovie = (props) => {
@@ -12,6 +11,11 @@ const SingleMovie = (props) => {
 
     const handleMovieDetailsClick = (movie) => {
         history.push(`/movies/${movie.id}`);
+    }
+
+    const getGenreNameById = (arr, id) => {
+        const found = arr.find(item => item.id === id);
+        return found?.name;
     }
 
     useEffect(() => {
