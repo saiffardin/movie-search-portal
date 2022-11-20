@@ -12,7 +12,8 @@ Latest live site (cefalo): [https://cefalo-movie-portal.netlify.app/](https://ce
 2. Clone this repository by the following command -
     - `git clone https://github.com/saiffardin/movie-search-portal.git`
 3. Open up the cloned project in *vs code* editor.
-4. From the terminal of *vs code*, execute the following commands one by one:
+4. Find the `env.txt` file, and rename it to `.env`
+4. Open the terminal of *vs code*, and execute the following commands one by one:
     - `npm install`
     - `npm start` 
 
@@ -36,7 +37,7 @@ Latest live site (cefalo): [https://cefalo-movie-portal.netlify.app/](https://ce
         - *ratings*
 
 
-3. Each movie `card` has a *Show Movie Details* btn. Clicking upon this takes user to the **Movie Details Page**. This page displays the following information about the movie : 
+3. Each movie `card` has a *Show Movie Details* button. Clicking upon this takes user to the **Movie Details Page**. This page displays the following information about the movie : 
 
     - Poster image
     - Title
@@ -84,7 +85,7 @@ This component's responsibility is to show 3 nav menus on every page we route th
 ---
 
 ### [LandingPage.js](./src/Components/LandingPage/LandingPage.js) <span id="LandingPage"></span> : 
-This component finds all the movie genres by calling [get list of genres](#genreList) api. Then it calls [get movies from a specific genre](#genreSpecificMovies) api to find movies of that genre. To show 5 movies of every genre in the landing page, this component uses [ShowMovies](#ShowMovies) component for every genre available. 
+This component finds all the movie genres by calling [get list of genres](#genreList) api. Then it calls [get movies from a specific genre](#genreSpecificMovies) api to find movies of that genre. To show 5 movies of every genre in the landing page, this component uses [ShowMovies](#ShowMovies) component. 
 
 ---
 
@@ -94,7 +95,7 @@ This component uses the *swiper* library, and [SingleSwiperMovie](#SingleSwiperM
 ---
 
 ### [SingleSwiperMovie.js](./src/Components/SingleSwiperMovie/SingleSwiperMovie.js) <span id="SingleSwiperMovie"></span> : 
-The look-and-design of every movie card in the landing page is determine by this component. 
+The look-and-design of every movie card in the landing page is developed with this component. 
 
 ---
 
@@ -143,9 +144,27 @@ Based on conditional rendering this component shows either *Add to wishlist* but
 
 ## `Screenshots:`
 
-- Landing Page : Desktop
+- Landing Page: 
     
-    ![Landing Page : Desktop](./screenshots/1.landing_page_desktop.png)
+    ![Landing Page](./screenshots/1_landing_page.png)
+
+---
+
+- Genre Page: 
+    
+    ![Genre Page](./screenshots/2_genre_page.png)
+
+---
+
+- Movie Details Page: 
+    
+    ![Movie Details Page](./screenshots/3_movie_details_page.png)
+
+---
+
+- Movie Details Page - Mobile: 
+    
+    ![Movie Details Page - Mobile](./screenshots/4_mobile_movie_details_page.png)
 
 ---
 
