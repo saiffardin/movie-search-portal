@@ -90,7 +90,7 @@ const TopMoviesList = () => {
                         size="sm"
                     >
                         {
-                            SORTING_OPTIONS.map((option, indx) => <Dropdown.Item key={indx} eventKey={option}>{option}</Dropdown.Item>)
+                            SORTING_OPTIONS?.map((option, indx) => <Dropdown.Item key={indx} eventKey={option}>{option}</Dropdown.Item>)
                         }
                     </DropdownButton>
                 </div>

@@ -46,7 +46,7 @@ const MovieDetails = () => {
                                 <Card.Subtitle className=''>Genre:
                                     <span className=' fw-light' >
                                         {
-                                            movie.genres?.map((genre, indx) => {
+                                            movie?.genres?.map((genre, indx) => {
                                                 return (
                                                     <span key={indx}>
                                                         {' '}

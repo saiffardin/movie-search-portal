@@ -44,7 +44,7 @@ const SingleMovie = (props) => {
                         <Card.Subtitle className=''>Genre:
                             <span className=' fw-light' >
                                 {
-                                    movie.genre_ids?.map((id) => {
+                                    movie?.genre_ids?.map((id) => {
                                         return (
                                             <span key={movie.id + id}>
                                                 {' '}

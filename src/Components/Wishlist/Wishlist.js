@@ -20,7 +20,7 @@ const Wishlist = () => {
 
             <div className="container">
                 <Row>
-                    {wishlist.map((movie) => (
+                    {wishlist?.map((movie) => (
                         <Col className="d-flex justify-content-center" key={movie.id}>
                             <SingleMovie
                                 movie={movie}

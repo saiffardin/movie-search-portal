@@ -28,7 +28,7 @@ const NavbarSection = (props) => {
                             <NavDropdown title="Genre List">
                                 <div style={{height: '200px', overflowY: 'scroll'}}>
                                     {
-                                        genres.map((genre) => (
+                                        genres?.map((genre) => (
                                             <NavDropdown.Item
                                                 key={genre.id}
                                                 onClick={() => routeChangeHandler(`/genre/${genre.id}`)}

@@ -75,7 +75,7 @@ const ShowMovies = (props) => {
                         },
                     }}
                 >
-                    {movies.map((movie, indx) => (
+                    {movies?.map((movie, indx) => (
 
                         <SwiperSlide key={indx}>
                             <SingleSwiperMovie

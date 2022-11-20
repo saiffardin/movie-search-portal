@@ -16,7 +16,7 @@ const LandingPage = () => {
     }, [])
 
     useEffect(() => {
-        genres.map((singleGenre) => {
+        genres?.map((singleGenre) => {
             fetch(getMoviesByGenreUrl(singleGenre.id))
                 .then((data) => data.json())
                 .then((res) => {
@@ -38,7 +38,7 @@ const LandingPage = () => {
     return (
         <div>
             {
-                genreWiseMovies.map((singleGenre, indx) => (
+                genreWiseMovies?.map((singleGenre, indx) => (
                     <ShowMovies
                         key={indx}
                         divBg={stylesDivBg[indx % stylesDivBg.length]}
