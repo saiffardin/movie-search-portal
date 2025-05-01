@@ -1,10 +1,14 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import AppRouter from "./router/AppRouter";
+import WishlistProvider from "@context/WishlistProvider";
 
-createRoot(document.getElementById('root')!).render(
+import "@styles/index";
+
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <WishlistProvider>
+      <AppRouter />
+    </WishlistProvider>
+  </StrictMode>
+);
